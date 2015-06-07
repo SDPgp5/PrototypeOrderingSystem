@@ -46,6 +46,7 @@
             System.Windows.Forms.Label availableLabel;
             System.Windows.Forms.Label stock_levelLabel;
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UsrCtrMasterData));
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panBaseMasterData = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.button1 = new System.Windows.Forms.Button();
@@ -85,7 +86,7 @@
             this.stockLevelDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.splitContainer3 = new System.Windows.Forms.SplitContainer();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.availableComboBox = new System.Windows.Forms.ComboBox();
             this.productIDTextBox = new System.Windows.Forms.TextBox();
             this.productNameTextBox = new System.Windows.Forms.TextBox();
             this.priceNumericUpDown = new System.Windows.Forms.NumericUpDown();
@@ -121,7 +122,10 @@
             this.categoryTableAdapter = new Prototype_OrderingSystem_v2.res.database.dbDataSetTableAdapters.CategoryTableAdapter();
             this.supplierTableAdapter = new Prototype_OrderingSystem_v2.res.database.dbDataSetTableAdapters.SupplierTableAdapter();
             this.errProvider = new System.Windows.Forms.ErrorProvider(this.components);
-            this.productBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.linkLabel1 = new System.Windows.Forms.LinkLabel();
             productIDLabel = new System.Windows.Forms.Label();
             productNameLabel = new System.Windows.Forms.Label();
             priceLabel = new System.Windows.Forms.Label();
@@ -173,13 +177,13 @@
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errProvider)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.productBindingSource1)).BeginInit();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // productIDLabel
             // 
             productIDLabel.AutoSize = true;
-            productIDLabel.Location = new System.Drawing.Point(26, 26);
+            productIDLabel.Location = new System.Drawing.Point(13, 27);
             productIDLabel.Name = "productIDLabel";
             productIDLabel.Size = new System.Drawing.Size(59, 12);
             productIDLabel.TabIndex = 0;
@@ -188,7 +192,7 @@
             // productNameLabel
             // 
             productNameLabel.AutoSize = true;
-            productNameLabel.Location = new System.Drawing.Point(26, 54);
+            productNameLabel.Location = new System.Drawing.Point(13, 55);
             productNameLabel.Name = "productNameLabel";
             productNameLabel.Size = new System.Drawing.Size(74, 12);
             productNameLabel.TabIndex = 2;
@@ -197,7 +201,7 @@
             // priceLabel
             // 
             priceLabel.AutoSize = true;
-            priceLabel.Location = new System.Drawing.Point(26, 79);
+            priceLabel.Location = new System.Drawing.Point(13, 80);
             priceLabel.Name = "priceLabel";
             priceLabel.Size = new System.Drawing.Size(31, 12);
             priceLabel.TabIndex = 4;
@@ -206,7 +210,7 @@
             // categoryIDLabel
             // 
             categoryIDLabel.AutoSize = true;
-            categoryIDLabel.Location = new System.Drawing.Point(26, 110);
+            categoryIDLabel.Location = new System.Drawing.Point(13, 111);
             categoryIDLabel.Name = "categoryIDLabel";
             categoryIDLabel.Size = new System.Drawing.Size(63, 12);
             categoryIDLabel.TabIndex = 6;
@@ -215,7 +219,7 @@
             // descriptionLabel
             // 
             descriptionLabel.AutoSize = true;
-            descriptionLabel.Location = new System.Drawing.Point(26, 136);
+            descriptionLabel.Location = new System.Drawing.Point(13, 137);
             descriptionLabel.Name = "descriptionLabel";
             descriptionLabel.Size = new System.Drawing.Size(59, 12);
             descriptionLabel.TabIndex = 8;
@@ -224,7 +228,7 @@
             // colorLabel
             // 
             colorLabel.AutoSize = true;
-            colorLabel.Location = new System.Drawing.Point(26, 164);
+            colorLabel.Location = new System.Drawing.Point(13, 165);
             colorLabel.Name = "colorLabel";
             colorLabel.Size = new System.Drawing.Size(32, 12);
             colorLabel.TabIndex = 10;
@@ -233,7 +237,7 @@
             // sizeLabel
             // 
             sizeLabel.AutoSize = true;
-            sizeLabel.Location = new System.Drawing.Point(26, 192);
+            sizeLabel.Location = new System.Drawing.Point(13, 193);
             sizeLabel.Name = "sizeLabel";
             sizeLabel.Size = new System.Drawing.Size(25, 12);
             sizeLabel.TabIndex = 12;
@@ -242,7 +246,7 @@
             // weightLabel
             // 
             weightLabel.AutoSize = true;
-            weightLabel.Location = new System.Drawing.Point(26, 215);
+            weightLabel.Location = new System.Drawing.Point(13, 216);
             weightLabel.Name = "weightLabel";
             weightLabel.Size = new System.Drawing.Size(39, 12);
             weightLabel.TabIndex = 14;
@@ -251,7 +255,7 @@
             // materialLabel
             // 
             materialLabel.AutoSize = true;
-            materialLabel.Location = new System.Drawing.Point(26, 246);
+            materialLabel.Location = new System.Drawing.Point(13, 247);
             materialLabel.Name = "materialLabel";
             materialLabel.Size = new System.Drawing.Size(45, 12);
             materialLabel.TabIndex = 16;
@@ -260,7 +264,7 @@
             // designerLabel
             // 
             designerLabel.AutoSize = true;
-            designerLabel.Location = new System.Drawing.Point(26, 274);
+            designerLabel.Location = new System.Drawing.Point(13, 275);
             designerLabel.Name = "designerLabel";
             designerLabel.Size = new System.Drawing.Size(47, 12);
             designerLabel.TabIndex = 18;
@@ -269,7 +273,7 @@
             // manufacturerLabel
             // 
             manufacturerLabel.AutoSize = true;
-            manufacturerLabel.Location = new System.Drawing.Point(26, 302);
+            manufacturerLabel.Location = new System.Drawing.Point(13, 303);
             manufacturerLabel.Name = "manufacturerLabel";
             manufacturerLabel.Size = new System.Drawing.Size(70, 12);
             manufacturerLabel.TabIndex = 20;
@@ -278,7 +282,7 @@
             // supplierIDLabel
             // 
             supplierIDLabel.AutoSize = true;
-            supplierIDLabel.Location = new System.Drawing.Point(26, 330);
+            supplierIDLabel.Location = new System.Drawing.Point(13, 331);
             supplierIDLabel.Name = "supplierIDLabel";
             supplierIDLabel.Size = new System.Drawing.Size(60, 12);
             supplierIDLabel.TabIndex = 22;
@@ -287,7 +291,7 @@
             // productionDateLabel
             // 
             productionDateLabel.AutoSize = true;
-            productionDateLabel.Location = new System.Drawing.Point(26, 357);
+            productionDateLabel.Location = new System.Drawing.Point(13, 358);
             productionDateLabel.Name = "productionDateLabel";
             productionDateLabel.Size = new System.Drawing.Size(83, 12);
             productionDateLabel.TabIndex = 24;
@@ -296,7 +300,7 @@
             // discountLabel
             // 
             discountLabel.AutoSize = true;
-            discountLabel.Location = new System.Drawing.Point(26, 381);
+            discountLabel.Location = new System.Drawing.Point(13, 382);
             discountLabel.Name = "discountLabel";
             discountLabel.Size = new System.Drawing.Size(47, 12);
             discountLabel.TabIndex = 26;
@@ -305,7 +309,7 @@
             // availableLabel
             // 
             availableLabel.AutoSize = true;
-            availableLabel.Location = new System.Drawing.Point(26, 414);
+            availableLabel.Location = new System.Drawing.Point(13, 415);
             availableLabel.Name = "availableLabel";
             availableLabel.Size = new System.Drawing.Size(49, 12);
             availableLabel.TabIndex = 28;
@@ -314,7 +318,7 @@
             // stock_levelLabel
             // 
             stock_levelLabel.AutoSize = true;
-            stock_levelLabel.Location = new System.Drawing.Point(26, 439);
+            stock_levelLabel.Location = new System.Drawing.Point(13, 440);
             stock_levelLabel.Name = "stock_levelLabel";
             stock_levelLabel.Size = new System.Drawing.Size(57, 12);
             stock_levelLabel.TabIndex = 30;
@@ -341,15 +345,14 @@
             this.panel2.AutoSize = true;
             this.panel2.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.panel2.BackColor = System.Drawing.Color.White;
+            this.panel2.Controls.Add(this.groupBox1);
             this.panel2.Controls.Add(this.button1);
             this.panel2.Controls.Add(this.btnPrint);
             this.panel2.Controls.Add(this.tabControl1);
-            this.panel2.Controls.Add(this.btnImportCSV);
             this.panel2.Controls.Add(this.groupBox2);
-            this.panel2.Controls.Add(this.btnFilter);
             this.panel2.Location = new System.Drawing.Point(13, 95);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(861, 470);
+            this.panel2.Size = new System.Drawing.Size(866, 470);
             this.panel2.TabIndex = 11;
             // 
             // button1
@@ -360,7 +363,7 @@
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button1.Font = new System.Drawing.Font("Microsoft JhengHei UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.button1.ForeColor = System.Drawing.Color.White;
-            this.button1.Location = new System.Drawing.Point(600, 31);
+            this.button1.Location = new System.Drawing.Point(750, 52);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(96, 23);
             this.button1.TabIndex = 16;
@@ -375,7 +378,7 @@
             this.btnPrint.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnPrint.Font = new System.Drawing.Font("Microsoft JhengHei UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.btnPrint.ForeColor = System.Drawing.Color.White;
-            this.btnPrint.Location = new System.Drawing.Point(489, 31);
+            this.btnPrint.Location = new System.Drawing.Point(750, 22);
             this.btnPrint.Name = "btnPrint";
             this.btnPrint.Size = new System.Drawing.Size(96, 23);
             this.btnPrint.TabIndex = 15;
@@ -389,10 +392,10 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tabControl1.Controls.Add(this.tabProduct);
             this.tabControl1.Controls.Add(this.tabCategory);
-            this.tabControl1.Location = new System.Drawing.Point(14, 71);
+            this.tabControl1.Location = new System.Drawing.Point(14, 84);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(827, 383);
+            this.tabControl1.Size = new System.Drawing.Size(839, 383);
             this.tabControl1.TabIndex = 1;
             // 
             // tabProduct
@@ -401,7 +404,7 @@
             this.tabProduct.Location = new System.Drawing.Point(4, 22);
             this.tabProduct.Name = "tabProduct";
             this.tabProduct.Padding = new System.Windows.Forms.Padding(3);
-            this.tabProduct.Size = new System.Drawing.Size(819, 357);
+            this.tabProduct.Size = new System.Drawing.Size(831, 357);
             this.tabProduct.TabIndex = 0;
             this.tabProduct.Text = "Product";
             this.tabProduct.UseVisualStyleBackColor = true;
@@ -421,8 +424,8 @@
             // 
             this.splitContainer2.Panel2.Controls.Add(this.splitContainer3);
             this.splitContainer2.Panel2.Leave += new System.EventHandler(this.splitContainer2_Panel2_Leave);
-            this.splitContainer2.Size = new System.Drawing.Size(813, 351);
-            this.splitContainer2.SplitterDistance = 459;
+            this.splitContainer2.Size = new System.Drawing.Size(825, 351);
+            this.splitContainer2.SplitterDistance = 479;
             this.splitContainer2.TabIndex = 0;
             // 
             // bindingNavigator1
@@ -430,6 +433,7 @@
             this.bindingNavigator1.AddNewItem = null;
             this.bindingNavigator1.BindingSource = this.productBindingSource;
             this.bindingNavigator1.CountItem = this.bindingNavigatorCountItem;
+            this.bindingNavigator1.CountItemFormat = "/Total records: {0}";
             this.bindingNavigator1.DeleteItem = null;
             this.bindingNavigator1.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.bindingNavigator1.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
@@ -451,7 +455,7 @@
             this.bindingNavigator1.Name = "bindingNavigator1";
             this.bindingNavigator1.PositionItem = this.bindingNavigatorPositionItem;
             this.bindingNavigator1.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
-            this.bindingNavigator1.Size = new System.Drawing.Size(459, 25);
+            this.bindingNavigator1.Size = new System.Drawing.Size(479, 25);
             this.bindingNavigator1.TabIndex = 1;
             this.bindingNavigator1.Text = "bindingNavigator1";
             // 
@@ -473,8 +477,8 @@
             // bindingNavigatorCountItem
             // 
             this.bindingNavigatorCountItem.Name = "bindingNavigatorCountItem";
-            this.bindingNavigatorCountItem.Size = new System.Drawing.Size(27, 22);
-            this.bindingNavigatorCountItem.Text = "/{0}";
+            this.bindingNavigatorCountItem.Size = new System.Drawing.Size(107, 22);
+            this.bindingNavigatorCountItem.Text = "/Total records: {0}";
             this.bindingNavigatorCountItem.ToolTipText = "項目總數";
             // 
             // bindingNavigatorMoveFirstItem
@@ -562,12 +566,20 @@
             this.availableDataGridViewTextBoxColumn,
             this.stockLevelDataGridViewTextBoxColumn});
             this.dataGridView2.DataSource = this.productBindingSource;
-            this.dataGridView2.Dock = System.Windows.Forms.DockStyle.Fill;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("新細明體", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle5.NullValue = "null";
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridView2.DefaultCellStyle = dataGridViewCellStyle5;
             this.dataGridView2.Location = new System.Drawing.Point(0, 0);
             this.dataGridView2.Name = "dataGridView2";
             this.dataGridView2.ReadOnly = true;
             this.dataGridView2.RowTemplate.Height = 24;
-            this.dataGridView2.Size = new System.Drawing.Size(459, 351);
+            this.dataGridView2.Size = new System.Drawing.Size(499, 323);
             this.dataGridView2.TabIndex = 0;
             // 
             // productIDDataGridViewTextBoxColumn
@@ -698,7 +710,7 @@
             // splitContainer3.Panel2
             // 
             this.splitContainer3.Panel2.Controls.Add(this.panel4);
-            this.splitContainer3.Size = new System.Drawing.Size(350, 351);
+            this.splitContainer3.Size = new System.Drawing.Size(342, 351);
             this.splitContainer3.SplitterDistance = 298;
             this.splitContainer3.TabIndex = 2;
             // 
@@ -706,7 +718,7 @@
             // 
             this.panel3.AutoScroll = true;
             this.panel3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel3.Controls.Add(this.comboBox1);
+            this.panel3.Controls.Add(this.availableComboBox);
             this.panel3.Controls.Add(productIDLabel);
             this.panel3.Controls.Add(this.productIDTextBox);
             this.panel3.Controls.Add(productNameLabel);
@@ -741,26 +753,26 @@
             this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel3.Location = new System.Drawing.Point(0, 0);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(350, 298);
+            this.panel3.Size = new System.Drawing.Size(342, 298);
             this.panel3.TabIndex = 0;
             // 
-            // comboBox1
+            // availableComboBox
             // 
-            this.comboBox1.DataBindings.Add(new System.Windows.Forms.Binding("SelectedItem", this.productBindingSource, "available", true));
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Items.AddRange(new object[] {
+            this.availableComboBox.DataBindings.Add(new System.Windows.Forms.Binding("SelectedItem", this.productBindingSource, "available", true));
+            this.availableComboBox.FormattingEnabled = true;
+            this.availableComboBox.Items.AddRange(new object[] {
             "A",
             "N"});
-            this.comboBox1.Location = new System.Drawing.Point(115, 411);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(121, 20);
-            this.comboBox1.TabIndex = 32;
-            this.comboBox1.Text = "N";
+            this.availableComboBox.Location = new System.Drawing.Point(102, 412);
+            this.availableComboBox.Name = "availableComboBox";
+            this.availableComboBox.Size = new System.Drawing.Size(121, 20);
+            this.availableComboBox.TabIndex = 32;
+            this.availableComboBox.Text = "N";
             // 
             // productIDTextBox
             // 
             this.productIDTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.productBindingSource, "productID", true));
-            this.productIDTextBox.Location = new System.Drawing.Point(115, 23);
+            this.productIDTextBox.Location = new System.Drawing.Point(102, 24);
             this.productIDTextBox.Name = "productIDTextBox";
             this.productIDTextBox.ReadOnly = true;
             this.productIDTextBox.Size = new System.Drawing.Size(200, 22);
@@ -768,8 +780,9 @@
             // 
             // productNameTextBox
             // 
+            this.productNameTextBox.BackColor = System.Drawing.SystemColors.Window;
             this.productNameTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.productBindingSource, "productName", true));
-            this.productNameTextBox.Location = new System.Drawing.Point(115, 51);
+            this.productNameTextBox.Location = new System.Drawing.Point(102, 52);
             this.productNameTextBox.Name = "productNameTextBox";
             this.productNameTextBox.Size = new System.Drawing.Size(200, 22);
             this.productNameTextBox.TabIndex = 3;
@@ -779,7 +792,7 @@
             // 
             this.priceNumericUpDown.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.productBindingSource, "price", true));
             this.priceNumericUpDown.DecimalPlaces = 2;
-            this.priceNumericUpDown.Location = new System.Drawing.Point(115, 79);
+            this.priceNumericUpDown.Location = new System.Drawing.Point(102, 80);
             this.priceNumericUpDown.Maximum = new decimal(new int[] {
             1410065407,
             2,
@@ -797,7 +810,7 @@
             this.categoryIDComboBox.DataSource = this.categoryBindingSource;
             this.categoryIDComboBox.DisplayMember = "categoryID";
             this.categoryIDComboBox.FormattingEnabled = true;
-            this.categoryIDComboBox.Location = new System.Drawing.Point(115, 107);
+            this.categoryIDComboBox.Location = new System.Drawing.Point(102, 108);
             this.categoryIDComboBox.Name = "categoryIDComboBox";
             this.categoryIDComboBox.Size = new System.Drawing.Size(200, 20);
             this.categoryIDComboBox.TabIndex = 7;
@@ -811,7 +824,7 @@
             // descriptionTextBox
             // 
             this.descriptionTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.productBindingSource, "description", true));
-            this.descriptionTextBox.Location = new System.Drawing.Point(115, 133);
+            this.descriptionTextBox.Location = new System.Drawing.Point(102, 134);
             this.descriptionTextBox.Multiline = true;
             this.descriptionTextBox.Name = "descriptionTextBox";
             this.descriptionTextBox.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
@@ -821,7 +834,7 @@
             // colorTextBox
             // 
             this.colorTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.productBindingSource, "color", true));
-            this.colorTextBox.Location = new System.Drawing.Point(115, 161);
+            this.colorTextBox.Location = new System.Drawing.Point(102, 162);
             this.colorTextBox.Name = "colorTextBox";
             this.colorTextBox.Size = new System.Drawing.Size(200, 22);
             this.colorTextBox.TabIndex = 11;
@@ -834,7 +847,7 @@
             "S",
             "M",
             "L"});
-            this.sizeComboBox.Location = new System.Drawing.Point(115, 189);
+            this.sizeComboBox.Location = new System.Drawing.Point(102, 190);
             this.sizeComboBox.Name = "sizeComboBox";
             this.sizeComboBox.Size = new System.Drawing.Size(200, 20);
             this.sizeComboBox.TabIndex = 13;
@@ -843,7 +856,7 @@
             // 
             this.weightNumericUpDown.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.productBindingSource, "weight", true));
             this.weightNumericUpDown.DecimalPlaces = 2;
-            this.weightNumericUpDown.Location = new System.Drawing.Point(115, 215);
+            this.weightNumericUpDown.Location = new System.Drawing.Point(102, 216);
             this.weightNumericUpDown.Maximum = new decimal(new int[] {
             9999,
             0,
@@ -857,7 +870,7 @@
             // materialTextBox
             // 
             this.materialTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.productBindingSource, "material", true));
-            this.materialTextBox.Location = new System.Drawing.Point(115, 243);
+            this.materialTextBox.Location = new System.Drawing.Point(102, 244);
             this.materialTextBox.Name = "materialTextBox";
             this.materialTextBox.Size = new System.Drawing.Size(200, 22);
             this.materialTextBox.TabIndex = 17;
@@ -865,7 +878,7 @@
             // designerTextBox
             // 
             this.designerTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.productBindingSource, "designer", true));
-            this.designerTextBox.Location = new System.Drawing.Point(115, 271);
+            this.designerTextBox.Location = new System.Drawing.Point(102, 272);
             this.designerTextBox.Name = "designerTextBox";
             this.designerTextBox.Size = new System.Drawing.Size(195, 22);
             this.designerTextBox.TabIndex = 19;
@@ -873,7 +886,7 @@
             // manufacturerTextBox
             // 
             this.manufacturerTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.productBindingSource, "manufacturer", true));
-            this.manufacturerTextBox.Location = new System.Drawing.Point(115, 299);
+            this.manufacturerTextBox.Location = new System.Drawing.Point(102, 300);
             this.manufacturerTextBox.Name = "manufacturerTextBox";
             this.manufacturerTextBox.Size = new System.Drawing.Size(195, 22);
             this.manufacturerTextBox.TabIndex = 21;
@@ -884,7 +897,7 @@
             this.supplierIDComboBox.DataSource = this.supplierBindingSource;
             this.supplierIDComboBox.DisplayMember = "supplierID";
             this.supplierIDComboBox.FormattingEnabled = true;
-            this.supplierIDComboBox.Location = new System.Drawing.Point(115, 327);
+            this.supplierIDComboBox.Location = new System.Drawing.Point(102, 328);
             this.supplierIDComboBox.Name = "supplierIDComboBox";
             this.supplierIDComboBox.Size = new System.Drawing.Size(195, 20);
             this.supplierIDComboBox.TabIndex = 23;
@@ -899,7 +912,7 @@
             this.productionDateDateTimePicker.CustomFormat = "dd/MM/yyyy";
             this.productionDateDateTimePicker.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.productBindingSource, "productionDate", true));
             this.productionDateDateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.productionDateDateTimePicker.Location = new System.Drawing.Point(115, 353);
+            this.productionDateDateTimePicker.Location = new System.Drawing.Point(102, 354);
             this.productionDateDateTimePicker.Name = "productionDateDateTimePicker";
             this.productionDateDateTimePicker.Size = new System.Drawing.Size(195, 22);
             this.productionDateDateTimePicker.TabIndex = 25;
@@ -908,7 +921,7 @@
             // discountNumericUpDown
             // 
             this.discountNumericUpDown.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.productBindingSource, "discount", true));
-            this.discountNumericUpDown.Location = new System.Drawing.Point(115, 381);
+            this.discountNumericUpDown.Location = new System.Drawing.Point(102, 382);
             this.discountNumericUpDown.Name = "discountNumericUpDown";
             this.discountNumericUpDown.Size = new System.Drawing.Size(195, 22);
             this.discountNumericUpDown.TabIndex = 27;
@@ -916,7 +929,7 @@
             // stock_levelNumericUpDown
             // 
             this.stock_levelNumericUpDown.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.productBindingSource, "stock level", true));
-            this.stock_levelNumericUpDown.Location = new System.Drawing.Point(115, 439);
+            this.stock_levelNumericUpDown.Location = new System.Drawing.Point(102, 440);
             this.stock_levelNumericUpDown.Name = "stock_levelNumericUpDown";
             this.stock_levelNumericUpDown.Size = new System.Drawing.Size(195, 22);
             this.stock_levelNumericUpDown.TabIndex = 31;
@@ -931,7 +944,7 @@
             this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel4.Location = new System.Drawing.Point(0, 0);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(350, 49);
+            this.panel4.Size = new System.Drawing.Size(342, 49);
             this.panel4.TabIndex = 1;
             // 
             // btnCancel
@@ -983,6 +996,7 @@
             this.btnReset.TabIndex = 9;
             this.btnReset.Text = "Reset";
             this.btnReset.UseVisualStyleBackColor = false;
+            this.btnReset.Click += new System.EventHandler(this.btnReset_Click);
             // 
             // tabCategory
             // 
@@ -990,7 +1004,7 @@
             this.tabCategory.Location = new System.Drawing.Point(4, 22);
             this.tabCategory.Name = "tabCategory";
             this.tabCategory.Padding = new System.Windows.Forms.Padding(3);
-            this.tabCategory.Size = new System.Drawing.Size(819, 357);
+            this.tabCategory.Size = new System.Drawing.Size(841, 357);
             this.tabCategory.TabIndex = 1;
             this.tabCategory.Text = "Category";
             this.tabCategory.UseVisualStyleBackColor = true;
@@ -1005,8 +1019,8 @@
             // splitContainer1.Panel1
             // 
             this.splitContainer1.Panel1.Controls.Add(this.dataGridView1);
-            this.splitContainer1.Size = new System.Drawing.Size(813, 351);
-            this.splitContainer1.SplitterDistance = 581;
+            this.splitContainer1.Size = new System.Drawing.Size(835, 351);
+            this.splitContainer1.SplitterDistance = 596;
             this.splitContainer1.TabIndex = 15;
             // 
             // dataGridView1
@@ -1016,7 +1030,7 @@
             this.dataGridView1.Location = new System.Drawing.Point(0, 0);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(579, 349);
+            this.dataGridView1.Size = new System.Drawing.Size(594, 349);
             this.dataGridView1.TabIndex = 0;
             // 
             // btnImportCSV
@@ -1027,7 +1041,7 @@
             this.btnImportCSV.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnImportCSV.Font = new System.Drawing.Font("Microsoft JhengHei UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.btnImportCSV.ForeColor = System.Drawing.Color.White;
-            this.btnImportCSV.Location = new System.Drawing.Point(376, 31);
+            this.btnImportCSV.Location = new System.Drawing.Point(165, 21);
             this.btnImportCSV.Name = "btnImportCSV";
             this.btnImportCSV.Size = new System.Drawing.Size(96, 23);
             this.btnImportCSV.TabIndex = 12;
@@ -1038,12 +1052,13 @@
             // 
             this.groupBox2.Controls.Add(this.btnDelete);
             this.groupBox2.Controls.Add(this.btnAdd);
+            this.groupBox2.Controls.Add(this.btnImportCSV);
             this.groupBox2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.groupBox2.Font = new System.Drawing.Font("微軟正黑體", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.groupBox2.ForeColor = System.Drawing.Color.IndianRed;
-            this.groupBox2.Location = new System.Drawing.Point(14, 10);
+            this.groupBox2.Location = new System.Drawing.Point(446, 16);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(232, 55);
+            this.groupBox2.Size = new System.Drawing.Size(271, 55);
             this.groupBox2.TabIndex = 13;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Access Record: ";
@@ -1056,11 +1071,11 @@
             this.btnDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnDelete.Font = new System.Drawing.Font("Microsoft JhengHei UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.btnDelete.ForeColor = System.Drawing.Color.White;
-            this.btnDelete.Location = new System.Drawing.Point(119, 21);
+            this.btnDelete.Location = new System.Drawing.Point(87, 21);
             this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new System.Drawing.Size(107, 23);
+            this.btnDelete.Size = new System.Drawing.Size(62, 23);
             this.btnDelete.TabIndex = 9;
-            this.btnDelete.Text = "Delete record";
+            this.btnDelete.Text = "Delete";
             this.btnDelete.UseVisualStyleBackColor = false;
             this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
@@ -1074,9 +1089,9 @@
             this.btnAdd.ForeColor = System.Drawing.Color.White;
             this.btnAdd.Location = new System.Drawing.Point(11, 21);
             this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(96, 23);
+            this.btnAdd.Size = new System.Drawing.Size(62, 23);
             this.btnAdd.TabIndex = 6;
-            this.btnAdd.Text = "Add record";
+            this.btnAdd.Text = "Add";
             this.btnAdd.UseVisualStyleBackColor = false;
             this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
@@ -1088,15 +1103,17 @@
             this.btnFilter.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnFilter.Font = new System.Drawing.Font("Microsoft JhengHei UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.btnFilter.ForeColor = System.Drawing.Color.White;
-            this.btnFilter.Location = new System.Drawing.Point(261, 31);
+            this.btnFilter.Location = new System.Drawing.Point(301, 20);
             this.btnFilter.Name = "btnFilter";
-            this.btnFilter.Size = new System.Drawing.Size(96, 23);
+            this.btnFilter.Size = new System.Drawing.Size(110, 23);
             this.btnFilter.TabIndex = 11;
-            this.btnFilter.Text = "Filter";
+            this.btnFilter.Text = "Advanced Filter";
             this.btnFilter.UseVisualStyleBackColor = false;
+            this.btnFilter.Click += new System.EventHandler(this.btnFilter_Click);
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.linkLabel1);
             this.panel1.Controls.Add(this.pictureBox1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
@@ -1131,10 +1148,51 @@
             // 
             this.errProvider.ContainerControl = this;
             // 
-            // productBindingSource1
+            // groupBox1
             // 
-            this.productBindingSource1.DataMember = "Product";
-            this.productBindingSource1.DataSource = this.bsDataSet;
+            this.groupBox1.Controls.Add(this.label1);
+            this.groupBox1.Controls.Add(this.textBox1);
+            this.groupBox1.Controls.Add(this.btnFilter);
+            this.groupBox1.Font = new System.Drawing.Font("微軟正黑體", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.groupBox1.ForeColor = System.Drawing.Color.IndianRed;
+            this.groupBox1.Location = new System.Drawing.Point(15, 16);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(425, 53);
+            this.groupBox1.TabIndex = 17;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Enquiry";
+            // 
+            // textBox1
+            // 
+            this.textBox1.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.textBox1.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
+            this.textBox1.Location = new System.Drawing.Point(72, 21);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(201, 23);
+            this.textBox1.TabIndex = 12;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("微軟正黑體", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.label1.ForeColor = System.Drawing.Color.Black;
+            this.label1.Location = new System.Drawing.Point(6, 24);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(60, 16);
+            this.label1.TabIndex = 13;
+            this.label1.Text = "Keyword:";
+            // 
+            // linkLabel1
+            // 
+            this.linkLabel1.AutoSize = true;
+            this.linkLabel1.Font = new System.Drawing.Font("微軟正黑體", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.linkLabel1.ForeColor = System.Drawing.SystemColors.Highlight;
+            this.linkLabel1.Location = new System.Drawing.Point(363, 52);
+            this.linkLabel1.Name = "linkLabel1";
+            this.linkLabel1.Size = new System.Drawing.Size(43, 16);
+            this.linkLabel1.TabIndex = 18;
+            this.linkLabel1.TabStop = true;
+            this.linkLabel1.Text = "Menu";
             // 
             // UsrCtrMasterData
             // 
@@ -1183,9 +1241,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.groupBox2.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errProvider)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.productBindingSource1)).EndInit();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1250,7 +1310,7 @@
         private System.Windows.Forms.ToolStripButton bindingNavigatorMoveLastItem;
         private System.Windows.Forms.ToolStripSeparator bindingNavigatorSeparator2;
         private System.Windows.Forms.ErrorProvider errProvider;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox availableComboBox;
         private System.Windows.Forms.DataGridViewTextBoxColumn productIDDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn productNameDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn priceDataGridViewTextBoxColumn;
@@ -1267,8 +1327,11 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn discountDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn availableDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn stockLevelDataGridViewTextBoxColumn;
-        private System.Windows.Forms.BindingSource productBindingSource1;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.LinkLabel linkLabel1;
 
     }
 }

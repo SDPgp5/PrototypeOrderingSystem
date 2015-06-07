@@ -11,7 +11,6 @@ namespace Prototype_OrderingSystem_v2
 {
     public partial class UsrCtrMasterData : UserControl
     {
-        private bool saveState = true;
         public UsrCtrMasterData()
         {
             InitializeComponent();
@@ -20,7 +19,7 @@ namespace Prototype_OrderingSystem_v2
         private void UsrCtrMasterData_Load(object sender, EventArgs e)
         {
             this.productTableAdapter.Fill(this.dbDataSet.Product);
-
+            this.supplierTableAdapter.Fill(this.dbDataSet.Supplier);
         }
 
         private void btnUpdate_Click(object sender, EventArgs e)
@@ -43,6 +42,7 @@ namespace Prototype_OrderingSystem_v2
             {
                 productBindingSource.AddNew();
                 productIDTextBox.Text = GenID("PT", "000000", "product");
+                btnReset_Click(null, null);
             }
             catch (Exception ex)
             {
@@ -82,15 +82,18 @@ namespace Prototype_OrderingSystem_v2
 
         private void productNameTextBox_Validating(object sender, CancelEventArgs e)
         {
-            
-            if(productNameTextBox.Text.Equals(""))
+
+            if (productNameTextBox.Text.Equals(""))
             {
+                productNameTextBox.BackColor = System.Drawing.Color.Khaki;
                 errProvider.SetError(productNameTextBox, "Cannot be not");
                 errProvider.SetIconAlignment(productNameTextBox, ErrorIconAlignment.MiddleRight);
             }
             else
+            {
                 errProvider.SetError(productNameTextBox, "");
-        
+                productNameTextBox.BackColor = System.Drawing.SystemColors.Window;
+            }
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
@@ -109,6 +112,32 @@ namespace Prototype_OrderingSystem_v2
                 else
                     btnCancel_Click(null, null);
             }
+        }
+
+        private void btnReset_Click(object sender, EventArgs e)
+        {
+            productNameTextBox.Clear();
+            priceNumericUpDown.Value = 0;
+            categoryIDComboBox.Text = "";
+            descriptionTextBox.Clear();
+            colorTextBox.Clear();
+            sizeComboBox.Text = "";
+            weightNumericUpDown.Value = 0;
+            materialTextBox.Clear();
+            designerTextBox.Clear();
+            manufacturerTextBox.Clear();
+            supplierIDComboBox.Text = "";
+            productionDateDateTimePicker.Text = "";
+            discountNumericUpDown.Value = 0;
+            availableComboBox.Text = "N";
+            stock_levelNumericUpDown.Value = 0;
+        }
+
+        private void btnFilter_Click(object sender, EventArgs e)
+        {
+            //UsrCtrFilter ucFilter = new UsrCtrFilter();
+           // ucFilter.Dock = DockStyle.Bottom;
+           // this.Controls.Add(ucFilter);
         }
 
 

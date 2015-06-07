@@ -84,6 +84,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>en.resx</DependentUpon>
     </Compile>
+    <Compile Include="UsrCtrFilter.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UsrCtrFilter.Designer.cs">
+      <DependentUpon>UsrCtrFilter.cs</DependentUpon>
+    </Compile>
     <Compile Include="UsrCtrLogin.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -116,6 +122,9 @@
     <EmbeddedResource Include="res\en.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>en.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UsrCtrFilter.resx">
+      <DependentUpon>UsrCtrFilter.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UsrCtrLogin.resx">
       <DependentUpon>UsrCtrLogin.cs</DependentUpon>
