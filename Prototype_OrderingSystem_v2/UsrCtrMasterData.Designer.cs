@@ -45,12 +45,27 @@
             System.Windows.Forms.Label discountLabel;
             System.Windows.Forms.Label availableLabel;
             System.Windows.Forms.Label stock_levelLabel;
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UsrCtrMasterData));
             this.panBaseMasterData = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.button1 = new System.Windows.Forms.Button();
+            this.btnPrint = new System.Windows.Forms.Button();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabProduct = new System.Windows.Forms.TabPage();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
+            this.bindingNavigator1 = new System.Windows.Forms.BindingNavigator(this.components);
+            this.productBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.bsDataSet = new System.Windows.Forms.BindingSource(this.components);
+            this.dbDataSet = new Prototype_OrderingSystem_v2.res.database.dbDataSet();
+            this.bindingNavigatorCountItem = new System.Windows.Forms.ToolStripLabel();
+            this.bindingNavigatorMoveFirstItem = new System.Windows.Forms.ToolStripButton();
+            this.bindingNavigatorMovePreviousItem = new System.Windows.Forms.ToolStripButton();
+            this.bindingNavigatorSeparator = new System.Windows.Forms.ToolStripSeparator();
+            this.bindingNavigatorPositionItem = new System.Windows.Forms.ToolStripTextBox();
+            this.bindingNavigatorSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.bindingNavigatorMoveNextItem = new System.Windows.Forms.ToolStripButton();
+            this.bindingNavigatorMoveLastItem = new System.Windows.Forms.ToolStripButton();
+            this.bindingNavigatorSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
             this.productIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.productNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -68,17 +83,14 @@
             this.discountDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.availableDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.stockLevelDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.productBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.dbDataSet = new Prototype_OrderingSystem_v2.res.database.dbDataSet();
-            this.panel4 = new System.Windows.Forms.Panel();
-            this.button8 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.splitContainer3 = new System.Windows.Forms.SplitContainer();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.productIDTextBox = new System.Windows.Forms.TextBox();
             this.productNameTextBox = new System.Windows.Forms.TextBox();
             this.priceNumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.categoryIDComboBox = new System.Windows.Forms.ComboBox();
+            this.categoryBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.descriptionTextBox = new System.Windows.Forms.TextBox();
             this.colorTextBox = new System.Windows.Forms.TextBox();
             this.sizeComboBox = new System.Windows.Forms.ComboBox();
@@ -87,27 +99,29 @@
             this.designerTextBox = new System.Windows.Forms.TextBox();
             this.manufacturerTextBox = new System.Windows.Forms.TextBox();
             this.supplierIDComboBox = new System.Windows.Forms.ComboBox();
+            this.supplierBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.productionDateDateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.discountNumericUpDown = new System.Windows.Forms.NumericUpDown();
-            this.availableCheckBox = new System.Windows.Forms.CheckBox();
             this.stock_levelNumericUpDown = new System.Windows.Forms.NumericUpDown();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.btnCancel = new System.Windows.Forms.Button();
+            this.btnUpdate = new System.Windows.Forms.Button();
+            this.btnReset = new System.Windows.Forms.Button();
             this.tabCategory = new System.Windows.Forms.TabPage();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.button6 = new System.Windows.Forms.Button();
+            this.btnImportCSV = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.button4 = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
-            this.button7 = new System.Windows.Forms.Button();
+            this.btnDelete = new System.Windows.Forms.Button();
+            this.btnAdd = new System.Windows.Forms.Button();
+            this.btnFilter = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.categoryBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.productTableAdapter = new Prototype_OrderingSystem_v2.res.database.dbDataSetTableAdapters.ProductTableAdapter();
-            this.tableAdapterManager = new Prototype_OrderingSystem_v2.res.database.dbDataSetTableAdapters.TableAdapterManager();
             this.categoryTableAdapter = new Prototype_OrderingSystem_v2.res.database.dbDataSetTableAdapters.CategoryTableAdapter();
             this.supplierTableAdapter = new Prototype_OrderingSystem_v2.res.database.dbDataSetTableAdapters.SupplierTableAdapter();
-            this.supplierBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.splitContainer3 = new System.Windows.Forms.SplitContainer();
+            this.errProvider = new System.Windows.Forms.ErrorProvider(this.components);
+            this.productBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             productIDLabel = new System.Windows.Forms.Label();
             productNameLabel = new System.Windows.Forms.Label();
             priceLabel = new System.Windows.Forms.Label();
@@ -132,15 +146,24 @@
             this.splitContainer2.Panel1.SuspendLayout();
             this.splitContainer2.Panel2.SuspendLayout();
             this.splitContainer2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingNavigator1)).BeginInit();
+            this.bindingNavigator1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.productBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bsDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dbDataSet)).BeginInit();
-            this.panel4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer3)).BeginInit();
+            this.splitContainer3.Panel1.SuspendLayout();
+            this.splitContainer3.Panel2.SuspendLayout();
+            this.splitContainer3.SuspendLayout();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.priceNumericUpDown)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.categoryBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.weightNumericUpDown)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.supplierBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.discountNumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.stock_levelNumericUpDown)).BeginInit();
+            this.panel4.SuspendLayout();
             this.tabCategory.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -149,12 +172,8 @@
             this.groupBox2.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.categoryBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.supplierBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer3)).BeginInit();
-            this.splitContainer3.Panel1.SuspendLayout();
-            this.splitContainer3.Panel2.SuspendLayout();
-            this.splitContainer3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errProvider)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.productBindingSource1)).BeginInit();
             this.SuspendLayout();
             // 
             // productIDLabel
@@ -323,10 +342,11 @@
             this.panel2.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.panel2.BackColor = System.Drawing.Color.White;
             this.panel2.Controls.Add(this.button1);
+            this.panel2.Controls.Add(this.btnPrint);
             this.panel2.Controls.Add(this.tabControl1);
-            this.panel2.Controls.Add(this.button6);
+            this.panel2.Controls.Add(this.btnImportCSV);
             this.panel2.Controls.Add(this.groupBox2);
-            this.panel2.Controls.Add(this.button7);
+            this.panel2.Controls.Add(this.btnFilter);
             this.panel2.Location = new System.Drawing.Point(13, 95);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(861, 470);
@@ -340,12 +360,27 @@
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button1.Font = new System.Drawing.Font("Microsoft JhengHei UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.button1.ForeColor = System.Drawing.Color.White;
-            this.button1.Location = new System.Drawing.Point(489, 31);
+            this.button1.Location = new System.Drawing.Point(600, 31);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(96, 23);
-            this.button1.TabIndex = 15;
-            this.button1.Text = "Print table";
+            this.button1.TabIndex = 16;
+            this.button1.Text = "Refresh table";
             this.button1.UseVisualStyleBackColor = false;
+            // 
+            // btnPrint
+            // 
+            this.btnPrint.BackColor = System.Drawing.Color.IndianRed;
+            this.btnPrint.FlatAppearance.BorderColor = System.Drawing.Color.WhiteSmoke;
+            this.btnPrint.FlatAppearance.BorderSize = 0;
+            this.btnPrint.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnPrint.Font = new System.Drawing.Font("Microsoft JhengHei UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.btnPrint.ForeColor = System.Drawing.Color.White;
+            this.btnPrint.Location = new System.Drawing.Point(489, 31);
+            this.btnPrint.Name = "btnPrint";
+            this.btnPrint.Size = new System.Drawing.Size(96, 23);
+            this.btnPrint.TabIndex = 15;
+            this.btnPrint.Text = "Print table";
+            this.btnPrint.UseVisualStyleBackColor = false;
             // 
             // tabControl1
             // 
@@ -379,17 +414,134 @@
             // 
             // splitContainer2.Panel1
             // 
+            this.splitContainer2.Panel1.Controls.Add(this.bindingNavigator1);
             this.splitContainer2.Panel1.Controls.Add(this.dataGridView2);
             // 
             // splitContainer2.Panel2
             // 
             this.splitContainer2.Panel2.Controls.Add(this.splitContainer3);
+            this.splitContainer2.Panel2.Leave += new System.EventHandler(this.splitContainer2_Panel2_Leave);
             this.splitContainer2.Size = new System.Drawing.Size(813, 351);
             this.splitContainer2.SplitterDistance = 459;
             this.splitContainer2.TabIndex = 0;
             // 
+            // bindingNavigator1
+            // 
+            this.bindingNavigator1.AddNewItem = null;
+            this.bindingNavigator1.BindingSource = this.productBindingSource;
+            this.bindingNavigator1.CountItem = this.bindingNavigatorCountItem;
+            this.bindingNavigator1.DeleteItem = null;
+            this.bindingNavigator1.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.bindingNavigator1.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
+            this.bindingNavigator1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.bindingNavigatorMoveFirstItem,
+            this.bindingNavigatorMovePreviousItem,
+            this.bindingNavigatorSeparator,
+            this.bindingNavigatorPositionItem,
+            this.bindingNavigatorCountItem,
+            this.bindingNavigatorSeparator1,
+            this.bindingNavigatorMoveNextItem,
+            this.bindingNavigatorMoveLastItem,
+            this.bindingNavigatorSeparator2});
+            this.bindingNavigator1.Location = new System.Drawing.Point(0, 326);
+            this.bindingNavigator1.MoveFirstItem = this.bindingNavigatorMoveFirstItem;
+            this.bindingNavigator1.MoveLastItem = this.bindingNavigatorMoveLastItem;
+            this.bindingNavigator1.MoveNextItem = this.bindingNavigatorMoveNextItem;
+            this.bindingNavigator1.MovePreviousItem = this.bindingNavigatorMovePreviousItem;
+            this.bindingNavigator1.Name = "bindingNavigator1";
+            this.bindingNavigator1.PositionItem = this.bindingNavigatorPositionItem;
+            this.bindingNavigator1.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
+            this.bindingNavigator1.Size = new System.Drawing.Size(459, 25);
+            this.bindingNavigator1.TabIndex = 1;
+            this.bindingNavigator1.Text = "bindingNavigator1";
+            // 
+            // productBindingSource
+            // 
+            this.productBindingSource.DataMember = "Product";
+            this.productBindingSource.DataSource = this.bsDataSet;
+            // 
+            // bsDataSet
+            // 
+            this.bsDataSet.DataSource = this.dbDataSet;
+            this.bsDataSet.Position = 0;
+            // 
+            // dbDataSet
+            // 
+            this.dbDataSet.DataSetName = "dbDataSet";
+            this.dbDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // bindingNavigatorCountItem
+            // 
+            this.bindingNavigatorCountItem.Name = "bindingNavigatorCountItem";
+            this.bindingNavigatorCountItem.Size = new System.Drawing.Size(27, 22);
+            this.bindingNavigatorCountItem.Text = "/{0}";
+            this.bindingNavigatorCountItem.ToolTipText = "項目總數";
+            // 
+            // bindingNavigatorMoveFirstItem
+            // 
+            this.bindingNavigatorMoveFirstItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.bindingNavigatorMoveFirstItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorMoveFirstItem.Image")));
+            this.bindingNavigatorMoveFirstItem.Name = "bindingNavigatorMoveFirstItem";
+            this.bindingNavigatorMoveFirstItem.RightToLeftAutoMirrorImage = true;
+            this.bindingNavigatorMoveFirstItem.Size = new System.Drawing.Size(23, 22);
+            this.bindingNavigatorMoveFirstItem.Text = "移到最前面";
+            // 
+            // bindingNavigatorMovePreviousItem
+            // 
+            this.bindingNavigatorMovePreviousItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.bindingNavigatorMovePreviousItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorMovePreviousItem.Image")));
+            this.bindingNavigatorMovePreviousItem.Name = "bindingNavigatorMovePreviousItem";
+            this.bindingNavigatorMovePreviousItem.RightToLeftAutoMirrorImage = true;
+            this.bindingNavigatorMovePreviousItem.Size = new System.Drawing.Size(23, 22);
+            this.bindingNavigatorMovePreviousItem.Text = "移到上一個";
+            // 
+            // bindingNavigatorSeparator
+            // 
+            this.bindingNavigatorSeparator.Name = "bindingNavigatorSeparator";
+            this.bindingNavigatorSeparator.Size = new System.Drawing.Size(6, 25);
+            // 
+            // bindingNavigatorPositionItem
+            // 
+            this.bindingNavigatorPositionItem.AccessibleName = "位置";
+            this.bindingNavigatorPositionItem.AutoSize = false;
+            this.bindingNavigatorPositionItem.Name = "bindingNavigatorPositionItem";
+            this.bindingNavigatorPositionItem.Size = new System.Drawing.Size(50, 23);
+            this.bindingNavigatorPositionItem.Text = "0";
+            this.bindingNavigatorPositionItem.ToolTipText = "目前的位置";
+            // 
+            // bindingNavigatorSeparator1
+            // 
+            this.bindingNavigatorSeparator1.Name = "bindingNavigatorSeparator1";
+            this.bindingNavigatorSeparator1.Size = new System.Drawing.Size(6, 25);
+            // 
+            // bindingNavigatorMoveNextItem
+            // 
+            this.bindingNavigatorMoveNextItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.bindingNavigatorMoveNextItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorMoveNextItem.Image")));
+            this.bindingNavigatorMoveNextItem.Name = "bindingNavigatorMoveNextItem";
+            this.bindingNavigatorMoveNextItem.RightToLeftAutoMirrorImage = true;
+            this.bindingNavigatorMoveNextItem.Size = new System.Drawing.Size(23, 22);
+            this.bindingNavigatorMoveNextItem.Text = "移到下一個";
+            // 
+            // bindingNavigatorMoveLastItem
+            // 
+            this.bindingNavigatorMoveLastItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.bindingNavigatorMoveLastItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorMoveLastItem.Image")));
+            this.bindingNavigatorMoveLastItem.Name = "bindingNavigatorMoveLastItem";
+            this.bindingNavigatorMoveLastItem.RightToLeftAutoMirrorImage = true;
+            this.bindingNavigatorMoveLastItem.Size = new System.Drawing.Size(23, 22);
+            this.bindingNavigatorMoveLastItem.Text = "移到最後面";
+            // 
+            // bindingNavigatorSeparator2
+            // 
+            this.bindingNavigatorSeparator2.Name = "bindingNavigatorSeparator2";
+            this.bindingNavigatorSeparator2.Size = new System.Drawing.Size(6, 25);
+            // 
             // dataGridView2
             // 
+            this.dataGridView2.AllowUserToAddRows = false;
+            this.dataGridView2.AllowUserToDeleteRows = false;
+            this.dataGridView2.AllowUserToOrderColumns = true;
             this.dataGridView2.AutoGenerateColumns = false;
             this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView2.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -413,6 +565,7 @@
             this.dataGridView2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridView2.Location = new System.Drawing.Point(0, 0);
             this.dataGridView2.Name = "dataGridView2";
+            this.dataGridView2.ReadOnly = true;
             this.dataGridView2.RowTemplate.Height = 24;
             this.dataGridView2.Size = new System.Drawing.Size(459, 351);
             this.dataGridView2.TabIndex = 0;
@@ -422,172 +575,138 @@
             this.productIDDataGridViewTextBoxColumn.DataPropertyName = "productID";
             this.productIDDataGridViewTextBoxColumn.HeaderText = "productID";
             this.productIDDataGridViewTextBoxColumn.Name = "productIDDataGridViewTextBoxColumn";
+            this.productIDDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // productNameDataGridViewTextBoxColumn
             // 
             this.productNameDataGridViewTextBoxColumn.DataPropertyName = "productName";
             this.productNameDataGridViewTextBoxColumn.HeaderText = "productName";
             this.productNameDataGridViewTextBoxColumn.Name = "productNameDataGridViewTextBoxColumn";
+            this.productNameDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // priceDataGridViewTextBoxColumn
             // 
             this.priceDataGridViewTextBoxColumn.DataPropertyName = "price";
             this.priceDataGridViewTextBoxColumn.HeaderText = "price";
             this.priceDataGridViewTextBoxColumn.Name = "priceDataGridViewTextBoxColumn";
+            this.priceDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // categoryIDDataGridViewTextBoxColumn
             // 
             this.categoryIDDataGridViewTextBoxColumn.DataPropertyName = "categoryID";
             this.categoryIDDataGridViewTextBoxColumn.HeaderText = "categoryID";
             this.categoryIDDataGridViewTextBoxColumn.Name = "categoryIDDataGridViewTextBoxColumn";
+            this.categoryIDDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // descriptionDataGridViewTextBoxColumn
             // 
             this.descriptionDataGridViewTextBoxColumn.DataPropertyName = "description";
             this.descriptionDataGridViewTextBoxColumn.HeaderText = "description";
             this.descriptionDataGridViewTextBoxColumn.Name = "descriptionDataGridViewTextBoxColumn";
+            this.descriptionDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // colorDataGridViewTextBoxColumn
             // 
             this.colorDataGridViewTextBoxColumn.DataPropertyName = "color";
             this.colorDataGridViewTextBoxColumn.HeaderText = "color";
             this.colorDataGridViewTextBoxColumn.Name = "colorDataGridViewTextBoxColumn";
+            this.colorDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // sizeDataGridViewTextBoxColumn
             // 
             this.sizeDataGridViewTextBoxColumn.DataPropertyName = "size";
             this.sizeDataGridViewTextBoxColumn.HeaderText = "size";
             this.sizeDataGridViewTextBoxColumn.Name = "sizeDataGridViewTextBoxColumn";
+            this.sizeDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // weightDataGridViewTextBoxColumn
             // 
             this.weightDataGridViewTextBoxColumn.DataPropertyName = "weight";
             this.weightDataGridViewTextBoxColumn.HeaderText = "weight";
             this.weightDataGridViewTextBoxColumn.Name = "weightDataGridViewTextBoxColumn";
+            this.weightDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // materialDataGridViewTextBoxColumn
             // 
             this.materialDataGridViewTextBoxColumn.DataPropertyName = "material";
             this.materialDataGridViewTextBoxColumn.HeaderText = "material";
             this.materialDataGridViewTextBoxColumn.Name = "materialDataGridViewTextBoxColumn";
+            this.materialDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // designerDataGridViewTextBoxColumn
             // 
             this.designerDataGridViewTextBoxColumn.DataPropertyName = "designer";
             this.designerDataGridViewTextBoxColumn.HeaderText = "designer";
             this.designerDataGridViewTextBoxColumn.Name = "designerDataGridViewTextBoxColumn";
+            this.designerDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // manufacturerDataGridViewTextBoxColumn
             // 
             this.manufacturerDataGridViewTextBoxColumn.DataPropertyName = "manufacturer";
             this.manufacturerDataGridViewTextBoxColumn.HeaderText = "manufacturer";
             this.manufacturerDataGridViewTextBoxColumn.Name = "manufacturerDataGridViewTextBoxColumn";
+            this.manufacturerDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // supplierIDDataGridViewTextBoxColumn
             // 
             this.supplierIDDataGridViewTextBoxColumn.DataPropertyName = "supplierID";
             this.supplierIDDataGridViewTextBoxColumn.HeaderText = "supplierID";
             this.supplierIDDataGridViewTextBoxColumn.Name = "supplierIDDataGridViewTextBoxColumn";
+            this.supplierIDDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // productionDateDataGridViewTextBoxColumn
             // 
             this.productionDateDataGridViewTextBoxColumn.DataPropertyName = "productionDate";
             this.productionDateDataGridViewTextBoxColumn.HeaderText = "productionDate";
             this.productionDateDataGridViewTextBoxColumn.Name = "productionDateDataGridViewTextBoxColumn";
+            this.productionDateDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // discountDataGridViewTextBoxColumn
             // 
             this.discountDataGridViewTextBoxColumn.DataPropertyName = "discount";
             this.discountDataGridViewTextBoxColumn.HeaderText = "discount";
             this.discountDataGridViewTextBoxColumn.Name = "discountDataGridViewTextBoxColumn";
+            this.discountDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // availableDataGridViewTextBoxColumn
             // 
             this.availableDataGridViewTextBoxColumn.DataPropertyName = "available";
             this.availableDataGridViewTextBoxColumn.HeaderText = "available";
             this.availableDataGridViewTextBoxColumn.Name = "availableDataGridViewTextBoxColumn";
+            this.availableDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // stockLevelDataGridViewTextBoxColumn
             // 
             this.stockLevelDataGridViewTextBoxColumn.DataPropertyName = "stock level";
             this.stockLevelDataGridViewTextBoxColumn.HeaderText = "stock level";
             this.stockLevelDataGridViewTextBoxColumn.Name = "stockLevelDataGridViewTextBoxColumn";
+            this.stockLevelDataGridViewTextBoxColumn.ReadOnly = true;
             // 
-            // productBindingSource
+            // splitContainer3
             // 
-            this.productBindingSource.DataMember = "Product";
-            this.productBindingSource.DataSource = this.dbDataSet;
+            this.splitContainer3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainer3.FixedPanel = System.Windows.Forms.FixedPanel.Panel2;
+            this.splitContainer3.IsSplitterFixed = true;
+            this.splitContainer3.Location = new System.Drawing.Point(0, 0);
+            this.splitContainer3.Name = "splitContainer3";
+            this.splitContainer3.Orientation = System.Windows.Forms.Orientation.Horizontal;
             // 
-            // dbDataSet
+            // splitContainer3.Panel1
             // 
-            this.dbDataSet.DataSetName = "dbDataSet";
-            this.dbDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            this.splitContainer3.Panel1.Controls.Add(this.panel3);
             // 
-            // panel4
+            // splitContainer3.Panel2
             // 
-            this.panel4.AutoSize = true;
-            this.panel4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel4.Controls.Add(this.button8);
-            this.panel4.Controls.Add(this.button3);
-            this.panel4.Controls.Add(this.button2);
-            this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel4.Location = new System.Drawing.Point(0, 0);
-            this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(350, 49);
-            this.panel4.TabIndex = 1;
-            // 
-            // button8
-            // 
-            this.button8.AutoSize = true;
-            this.button8.BackColor = System.Drawing.Color.IndianRed;
-            this.button8.FlatAppearance.BorderColor = System.Drawing.Color.WhiteSmoke;
-            this.button8.FlatAppearance.BorderSize = 0;
-            this.button8.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button8.Font = new System.Drawing.Font("Microsoft JhengHei UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.button8.ForeColor = System.Drawing.Color.White;
-            this.button8.Location = new System.Drawing.Point(240, 10);
-            this.button8.Name = "button8";
-            this.button8.Size = new System.Drawing.Size(75, 30);
-            this.button8.TabIndex = 16;
-            this.button8.Text = "Cancel";
-            this.button8.UseVisualStyleBackColor = false;
-            // 
-            // button3
-            // 
-            this.button3.AutoSize = true;
-            this.button3.BackColor = System.Drawing.Color.IndianRed;
-            this.button3.FlatAppearance.BorderColor = System.Drawing.Color.WhiteSmoke;
-            this.button3.FlatAppearance.BorderSize = 0;
-            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button3.Font = new System.Drawing.Font("Microsoft JhengHei UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.button3.ForeColor = System.Drawing.Color.White;
-            this.button3.Location = new System.Drawing.Point(34, 10);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(75, 30);
-            this.button3.TabIndex = 6;
-            this.button3.Text = "Update";
-            this.button3.UseVisualStyleBackColor = false;
-            // 
-            // button2
-            // 
-            this.button2.AutoSize = true;
-            this.button2.BackColor = System.Drawing.Color.IndianRed;
-            this.button2.FlatAppearance.BorderColor = System.Drawing.Color.WhiteSmoke;
-            this.button2.FlatAppearance.BorderSize = 0;
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.Font = new System.Drawing.Font("Microsoft JhengHei UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.button2.ForeColor = System.Drawing.Color.White;
-            this.button2.Location = new System.Drawing.Point(136, 10);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 30);
-            this.button2.TabIndex = 9;
-            this.button2.Text = "Reset";
-            this.button2.UseVisualStyleBackColor = false;
+            this.splitContainer3.Panel2.Controls.Add(this.panel4);
+            this.splitContainer3.Size = new System.Drawing.Size(350, 351);
+            this.splitContainer3.SplitterDistance = 298;
+            this.splitContainer3.TabIndex = 2;
             // 
             // panel3
             // 
             this.panel3.AutoScroll = true;
             this.panel3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel3.Controls.Add(this.comboBox1);
             this.panel3.Controls.Add(productIDLabel);
             this.panel3.Controls.Add(this.productIDTextBox);
             this.panel3.Controls.Add(productNameLabel);
@@ -617,7 +736,6 @@
             this.panel3.Controls.Add(discountLabel);
             this.panel3.Controls.Add(this.discountNumericUpDown);
             this.panel3.Controls.Add(availableLabel);
-            this.panel3.Controls.Add(this.availableCheckBox);
             this.panel3.Controls.Add(stock_levelLabel);
             this.panel3.Controls.Add(this.stock_levelNumericUpDown);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -626,11 +744,25 @@
             this.panel3.Size = new System.Drawing.Size(350, 298);
             this.panel3.TabIndex = 0;
             // 
+            // comboBox1
+            // 
+            this.comboBox1.DataBindings.Add(new System.Windows.Forms.Binding("SelectedItem", this.productBindingSource, "available", true));
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Items.AddRange(new object[] {
+            "A",
+            "N"});
+            this.comboBox1.Location = new System.Drawing.Point(115, 411);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(121, 20);
+            this.comboBox1.TabIndex = 32;
+            this.comboBox1.Text = "N";
+            // 
             // productIDTextBox
             // 
             this.productIDTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.productBindingSource, "productID", true));
             this.productIDTextBox.Location = new System.Drawing.Point(115, 23);
             this.productIDTextBox.Name = "productIDTextBox";
+            this.productIDTextBox.ReadOnly = true;
             this.productIDTextBox.Size = new System.Drawing.Size(200, 22);
             this.productIDTextBox.TabIndex = 1;
             // 
@@ -641,29 +773,48 @@
             this.productNameTextBox.Name = "productNameTextBox";
             this.productNameTextBox.Size = new System.Drawing.Size(200, 22);
             this.productNameTextBox.TabIndex = 3;
+            this.productNameTextBox.Validating += new System.ComponentModel.CancelEventHandler(this.productNameTextBox_Validating);
             // 
             // priceNumericUpDown
             // 
             this.priceNumericUpDown.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.productBindingSource, "price", true));
+            this.priceNumericUpDown.DecimalPlaces = 2;
             this.priceNumericUpDown.Location = new System.Drawing.Point(115, 79);
+            this.priceNumericUpDown.Maximum = new decimal(new int[] {
+            1410065407,
+            2,
+            0,
+            131072});
             this.priceNumericUpDown.Name = "priceNumericUpDown";
             this.priceNumericUpDown.Size = new System.Drawing.Size(200, 22);
             this.priceNumericUpDown.TabIndex = 5;
+            this.priceNumericUpDown.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.priceNumericUpDown.ThousandsSeparator = true;
             // 
             // categoryIDComboBox
             // 
             this.categoryIDComboBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.productBindingSource, "categoryID", true));
+            this.categoryIDComboBox.DataSource = this.categoryBindingSource;
+            this.categoryIDComboBox.DisplayMember = "categoryID";
             this.categoryIDComboBox.FormattingEnabled = true;
             this.categoryIDComboBox.Location = new System.Drawing.Point(115, 107);
             this.categoryIDComboBox.Name = "categoryIDComboBox";
             this.categoryIDComboBox.Size = new System.Drawing.Size(200, 20);
             this.categoryIDComboBox.TabIndex = 7;
+            this.categoryIDComboBox.ValueMember = "categoryID";
+            // 
+            // categoryBindingSource
+            // 
+            this.categoryBindingSource.DataMember = "Category";
+            this.categoryBindingSource.DataSource = this.dbDataSet;
             // 
             // descriptionTextBox
             // 
             this.descriptionTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.productBindingSource, "description", true));
             this.descriptionTextBox.Location = new System.Drawing.Point(115, 133);
+            this.descriptionTextBox.Multiline = true;
             this.descriptionTextBox.Name = "descriptionTextBox";
+            this.descriptionTextBox.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.descriptionTextBox.Size = new System.Drawing.Size(200, 22);
             this.descriptionTextBox.TabIndex = 9;
             // 
@@ -677,8 +828,12 @@
             // 
             // sizeComboBox
             // 
-            this.sizeComboBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.productBindingSource, "size", true));
+            this.sizeComboBox.DataBindings.Add(new System.Windows.Forms.Binding("SelectedValue", this.productBindingSource, "size", true));
             this.sizeComboBox.FormattingEnabled = true;
+            this.sizeComboBox.Items.AddRange(new object[] {
+            "S",
+            "M",
+            "L"});
             this.sizeComboBox.Location = new System.Drawing.Point(115, 189);
             this.sizeComboBox.Name = "sizeComboBox";
             this.sizeComboBox.Size = new System.Drawing.Size(200, 20);
@@ -687,10 +842,17 @@
             // weightNumericUpDown
             // 
             this.weightNumericUpDown.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.productBindingSource, "weight", true));
+            this.weightNumericUpDown.DecimalPlaces = 2;
             this.weightNumericUpDown.Location = new System.Drawing.Point(115, 215);
+            this.weightNumericUpDown.Maximum = new decimal(new int[] {
+            9999,
+            0,
+            0,
+            0});
             this.weightNumericUpDown.Name = "weightNumericUpDown";
             this.weightNumericUpDown.Size = new System.Drawing.Size(200, 22);
             this.weightNumericUpDown.TabIndex = 15;
+            this.weightNumericUpDown.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // materialTextBox
             // 
@@ -719,19 +881,29 @@
             // supplierIDComboBox
             // 
             this.supplierIDComboBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.productBindingSource, "supplierID", true));
+            this.supplierIDComboBox.DataSource = this.supplierBindingSource;
+            this.supplierIDComboBox.DisplayMember = "supplierID";
             this.supplierIDComboBox.FormattingEnabled = true;
             this.supplierIDComboBox.Location = new System.Drawing.Point(115, 327);
             this.supplierIDComboBox.Name = "supplierIDComboBox";
             this.supplierIDComboBox.Size = new System.Drawing.Size(195, 20);
             this.supplierIDComboBox.TabIndex = 23;
             // 
+            // supplierBindingSource
+            // 
+            this.supplierBindingSource.DataMember = "Supplier";
+            this.supplierBindingSource.DataSource = this.dbDataSet;
+            // 
             // productionDateDateTimePicker
             // 
+            this.productionDateDateTimePicker.CustomFormat = "dd/MM/yyyy";
             this.productionDateDateTimePicker.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.productBindingSource, "productionDate", true));
+            this.productionDateDateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.productionDateDateTimePicker.Location = new System.Drawing.Point(115, 353);
             this.productionDateDateTimePicker.Name = "productionDateDateTimePicker";
             this.productionDateDateTimePicker.Size = new System.Drawing.Size(195, 22);
             this.productionDateDateTimePicker.TabIndex = 25;
+            this.productionDateDateTimePicker.Value = new System.DateTime(2015, 6, 6, 0, 0, 0, 0);
             // 
             // discountNumericUpDown
             // 
@@ -741,16 +913,6 @@
             this.discountNumericUpDown.Size = new System.Drawing.Size(195, 22);
             this.discountNumericUpDown.TabIndex = 27;
             // 
-            // availableCheckBox
-            // 
-            this.availableCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("CheckState", this.productBindingSource, "available", true));
-            this.availableCheckBox.Location = new System.Drawing.Point(115, 409);
-            this.availableCheckBox.Name = "availableCheckBox";
-            this.availableCheckBox.Size = new System.Drawing.Size(195, 24);
-            this.availableCheckBox.TabIndex = 29;
-            this.availableCheckBox.Text = "checkBox1";
-            this.availableCheckBox.UseVisualStyleBackColor = true;
-            // 
             // stock_levelNumericUpDown
             // 
             this.stock_levelNumericUpDown.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.productBindingSource, "stock level", true));
@@ -758,6 +920,69 @@
             this.stock_levelNumericUpDown.Name = "stock_levelNumericUpDown";
             this.stock_levelNumericUpDown.Size = new System.Drawing.Size(195, 22);
             this.stock_levelNumericUpDown.TabIndex = 31;
+            // 
+            // panel4
+            // 
+            this.panel4.AutoSize = true;
+            this.panel4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel4.Controls.Add(this.btnCancel);
+            this.panel4.Controls.Add(this.btnUpdate);
+            this.panel4.Controls.Add(this.btnReset);
+            this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel4.Location = new System.Drawing.Point(0, 0);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(350, 49);
+            this.panel4.TabIndex = 1;
+            // 
+            // btnCancel
+            // 
+            this.btnCancel.AutoSize = true;
+            this.btnCancel.BackColor = System.Drawing.Color.IndianRed;
+            this.btnCancel.FlatAppearance.BorderColor = System.Drawing.Color.WhiteSmoke;
+            this.btnCancel.FlatAppearance.BorderSize = 0;
+            this.btnCancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCancel.Font = new System.Drawing.Font("Microsoft JhengHei UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.btnCancel.ForeColor = System.Drawing.Color.White;
+            this.btnCancel.Location = new System.Drawing.Point(240, 10);
+            this.btnCancel.Name = "btnCancel";
+            this.btnCancel.Size = new System.Drawing.Size(75, 30);
+            this.btnCancel.TabIndex = 16;
+            this.btnCancel.Text = "Cancel";
+            this.btnCancel.UseVisualStyleBackColor = false;
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
+            // 
+            // btnUpdate
+            // 
+            this.btnUpdate.AutoSize = true;
+            this.btnUpdate.BackColor = System.Drawing.Color.IndianRed;
+            this.btnUpdate.FlatAppearance.BorderColor = System.Drawing.Color.WhiteSmoke;
+            this.btnUpdate.FlatAppearance.BorderSize = 0;
+            this.btnUpdate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnUpdate.Font = new System.Drawing.Font("Microsoft JhengHei UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.btnUpdate.ForeColor = System.Drawing.Color.White;
+            this.btnUpdate.Location = new System.Drawing.Point(34, 10);
+            this.btnUpdate.Name = "btnUpdate";
+            this.btnUpdate.Size = new System.Drawing.Size(75, 30);
+            this.btnUpdate.TabIndex = 6;
+            this.btnUpdate.Text = "Update";
+            this.btnUpdate.UseVisualStyleBackColor = false;
+            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
+            // 
+            // btnReset
+            // 
+            this.btnReset.AutoSize = true;
+            this.btnReset.BackColor = System.Drawing.Color.IndianRed;
+            this.btnReset.FlatAppearance.BorderColor = System.Drawing.Color.WhiteSmoke;
+            this.btnReset.FlatAppearance.BorderSize = 0;
+            this.btnReset.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnReset.Font = new System.Drawing.Font("Microsoft JhengHei UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.btnReset.ForeColor = System.Drawing.Color.White;
+            this.btnReset.Location = new System.Drawing.Point(136, 10);
+            this.btnReset.Name = "btnReset";
+            this.btnReset.Size = new System.Drawing.Size(75, 30);
+            this.btnReset.TabIndex = 9;
+            this.btnReset.Text = "Reset";
+            this.btnReset.UseVisualStyleBackColor = false;
             // 
             // tabCategory
             // 
@@ -794,25 +1019,25 @@
             this.dataGridView1.Size = new System.Drawing.Size(579, 349);
             this.dataGridView1.TabIndex = 0;
             // 
-            // button6
+            // btnImportCSV
             // 
-            this.button6.BackColor = System.Drawing.Color.IndianRed;
-            this.button6.FlatAppearance.BorderColor = System.Drawing.Color.WhiteSmoke;
-            this.button6.FlatAppearance.BorderSize = 0;
-            this.button6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button6.Font = new System.Drawing.Font("Microsoft JhengHei UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.button6.ForeColor = System.Drawing.Color.White;
-            this.button6.Location = new System.Drawing.Point(376, 31);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(96, 23);
-            this.button6.TabIndex = 12;
-            this.button6.Text = "Import CSV";
-            this.button6.UseVisualStyleBackColor = false;
+            this.btnImportCSV.BackColor = System.Drawing.Color.IndianRed;
+            this.btnImportCSV.FlatAppearance.BorderColor = System.Drawing.Color.WhiteSmoke;
+            this.btnImportCSV.FlatAppearance.BorderSize = 0;
+            this.btnImportCSV.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnImportCSV.Font = new System.Drawing.Font("Microsoft JhengHei UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.btnImportCSV.ForeColor = System.Drawing.Color.White;
+            this.btnImportCSV.Location = new System.Drawing.Point(376, 31);
+            this.btnImportCSV.Name = "btnImportCSV";
+            this.btnImportCSV.Size = new System.Drawing.Size(96, 23);
+            this.btnImportCSV.TabIndex = 12;
+            this.btnImportCSV.Text = "Import CSV";
+            this.btnImportCSV.UseVisualStyleBackColor = false;
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.button4);
-            this.groupBox2.Controls.Add(this.button5);
+            this.groupBox2.Controls.Add(this.btnDelete);
+            this.groupBox2.Controls.Add(this.btnAdd);
             this.groupBox2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.groupBox2.Font = new System.Drawing.Font("微軟正黑體", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.groupBox2.ForeColor = System.Drawing.Color.IndianRed;
@@ -823,50 +1048,52 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Access Record: ";
             // 
-            // button4
+            // btnDelete
             // 
-            this.button4.BackColor = System.Drawing.Color.IndianRed;
-            this.button4.FlatAppearance.BorderColor = System.Drawing.Color.WhiteSmoke;
-            this.button4.FlatAppearance.BorderSize = 0;
-            this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button4.Font = new System.Drawing.Font("Microsoft JhengHei UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.button4.ForeColor = System.Drawing.Color.White;
-            this.button4.Location = new System.Drawing.Point(119, 21);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(107, 23);
-            this.button4.TabIndex = 9;
-            this.button4.Text = "Delete record";
-            this.button4.UseVisualStyleBackColor = false;
+            this.btnDelete.BackColor = System.Drawing.Color.IndianRed;
+            this.btnDelete.FlatAppearance.BorderColor = System.Drawing.Color.WhiteSmoke;
+            this.btnDelete.FlatAppearance.BorderSize = 0;
+            this.btnDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnDelete.Font = new System.Drawing.Font("Microsoft JhengHei UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.btnDelete.ForeColor = System.Drawing.Color.White;
+            this.btnDelete.Location = new System.Drawing.Point(119, 21);
+            this.btnDelete.Name = "btnDelete";
+            this.btnDelete.Size = new System.Drawing.Size(107, 23);
+            this.btnDelete.TabIndex = 9;
+            this.btnDelete.Text = "Delete record";
+            this.btnDelete.UseVisualStyleBackColor = false;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
-            // button5
+            // btnAdd
             // 
-            this.button5.BackColor = System.Drawing.Color.IndianRed;
-            this.button5.FlatAppearance.BorderColor = System.Drawing.Color.WhiteSmoke;
-            this.button5.FlatAppearance.BorderSize = 0;
-            this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button5.Font = new System.Drawing.Font("Microsoft JhengHei UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.button5.ForeColor = System.Drawing.Color.White;
-            this.button5.Location = new System.Drawing.Point(11, 21);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(96, 23);
-            this.button5.TabIndex = 6;
-            this.button5.Text = "Add record";
-            this.button5.UseVisualStyleBackColor = false;
+            this.btnAdd.BackColor = System.Drawing.Color.IndianRed;
+            this.btnAdd.FlatAppearance.BorderColor = System.Drawing.Color.WhiteSmoke;
+            this.btnAdd.FlatAppearance.BorderSize = 0;
+            this.btnAdd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAdd.Font = new System.Drawing.Font("Microsoft JhengHei UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.btnAdd.ForeColor = System.Drawing.Color.White;
+            this.btnAdd.Location = new System.Drawing.Point(11, 21);
+            this.btnAdd.Name = "btnAdd";
+            this.btnAdd.Size = new System.Drawing.Size(96, 23);
+            this.btnAdd.TabIndex = 6;
+            this.btnAdd.Text = "Add record";
+            this.btnAdd.UseVisualStyleBackColor = false;
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
-            // button7
+            // btnFilter
             // 
-            this.button7.BackColor = System.Drawing.Color.IndianRed;
-            this.button7.FlatAppearance.BorderColor = System.Drawing.Color.WhiteSmoke;
-            this.button7.FlatAppearance.BorderSize = 0;
-            this.button7.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button7.Font = new System.Drawing.Font("Microsoft JhengHei UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.button7.ForeColor = System.Drawing.Color.White;
-            this.button7.Location = new System.Drawing.Point(261, 31);
-            this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(96, 23);
-            this.button7.TabIndex = 11;
-            this.button7.Text = "Filter";
-            this.button7.UseVisualStyleBackColor = false;
+            this.btnFilter.BackColor = System.Drawing.Color.IndianRed;
+            this.btnFilter.FlatAppearance.BorderColor = System.Drawing.Color.WhiteSmoke;
+            this.btnFilter.FlatAppearance.BorderSize = 0;
+            this.btnFilter.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnFilter.Font = new System.Drawing.Font("Microsoft JhengHei UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.btnFilter.ForeColor = System.Drawing.Color.White;
+            this.btnFilter.Location = new System.Drawing.Point(261, 31);
+            this.btnFilter.Name = "btnFilter";
+            this.btnFilter.Size = new System.Drawing.Size(96, 23);
+            this.btnFilter.TabIndex = 11;
+            this.btnFilter.Text = "Filter";
+            this.btnFilter.UseVisualStyleBackColor = false;
             // 
             // panel1
             // 
@@ -888,38 +1115,9 @@
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             // 
-            // categoryBindingSource
-            // 
-            this.categoryBindingSource.DataMember = "Category";
-            this.categoryBindingSource.DataSource = this.dbDataSet;
-            // 
             // productTableAdapter
             // 
             this.productTableAdapter.ClearBeforeFill = true;
-            // 
-            // tableAdapterManager
-            // 
-            this.tableAdapterManager.BackupDataSetBeforeUpdate = false;
-            this.tableAdapterManager.CategoryTableAdapter = this.categoryTableAdapter;
-            this.tableAdapterManager.CustomerTableAdapter = null;
-            this.tableAdapterManager.DepartmentTableAdapter = null;
-            this.tableAdapterManager.EmployeeTableAdapter = null;
-            this.tableAdapterManager.FeedbackTableAdapter = null;
-            this.tableAdapterManager.GoodReturnedTableAdapter = null;
-            this.tableAdapterManager.InventoryTableAdapter = null;
-            this.tableAdapterManager.JobDutyTableAdapter = null;
-            this.tableAdapterManager.OrderLineTableAdapter = null;
-            this.tableAdapterManager.OrderTableAdapter = null;
-            this.tableAdapterManager.PhotoTableAdapter = null;
-            this.tableAdapterManager.ProductTableAdapter = this.productTableAdapter;
-            this.tableAdapterManager.PurchaseOrderLineTableAdapter = null;
-            this.tableAdapterManager.PurchaseOrderTableAdapter = null;
-            this.tableAdapterManager.ReorderLineTableAdapter = null;
-            this.tableAdapterManager.ReorderTableAdapter = null;
-            this.tableAdapterManager.RetailShopTableAdapter = null;
-            this.tableAdapterManager.SupplierTableAdapter = this.supplierTableAdapter;
-            this.tableAdapterManager.UpdateOrder = Prototype_OrderingSystem_v2.res.database.dbDataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
-            this.tableAdapterManager.WarehouseTableAdapter = null;
             // 
             // categoryTableAdapter
             // 
@@ -929,30 +1127,14 @@
             // 
             this.supplierTableAdapter.ClearBeforeFill = true;
             // 
-            // supplierBindingSource
+            // errProvider
             // 
-            this.supplierBindingSource.DataMember = "Supplier";
-            this.supplierBindingSource.DataSource = this.dbDataSet;
+            this.errProvider.ContainerControl = this;
             // 
-            // splitContainer3
+            // productBindingSource1
             // 
-            this.splitContainer3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainer3.FixedPanel = System.Windows.Forms.FixedPanel.Panel2;
-            this.splitContainer3.IsSplitterFixed = true;
-            this.splitContainer3.Location = new System.Drawing.Point(0, 0);
-            this.splitContainer3.Name = "splitContainer3";
-            this.splitContainer3.Orientation = System.Windows.Forms.Orientation.Horizontal;
-            // 
-            // splitContainer3.Panel1
-            // 
-            this.splitContainer3.Panel1.Controls.Add(this.panel3);
-            // 
-            // splitContainer3.Panel2
-            // 
-            this.splitContainer3.Panel2.Controls.Add(this.panel4);
-            this.splitContainer3.Size = new System.Drawing.Size(350, 351);
-            this.splitContainer3.SplitterDistance = 298;
-            this.splitContainer3.TabIndex = 2;
+            this.productBindingSource1.DataMember = "Product";
+            this.productBindingSource1.DataSource = this.bsDataSet;
             // 
             // UsrCtrMasterData
             // 
@@ -961,26 +1143,39 @@
             this.Controls.Add(this.panBaseMasterData);
             this.Name = "UsrCtrMasterData";
             this.Size = new System.Drawing.Size(892, 582);
+            this.Load += new System.EventHandler(this.UsrCtrMasterData_Load);
             this.panBaseMasterData.ResumeLayout(false);
             this.panBaseMasterData.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.tabControl1.ResumeLayout(false);
             this.tabProduct.ResumeLayout(false);
             this.splitContainer2.Panel1.ResumeLayout(false);
+            this.splitContainer2.Panel1.PerformLayout();
             this.splitContainer2.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).EndInit();
             this.splitContainer2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingNavigator1)).EndInit();
+            this.bindingNavigator1.ResumeLayout(false);
+            this.bindingNavigator1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.productBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bsDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dbDataSet)).EndInit();
-            this.panel4.ResumeLayout(false);
-            this.panel4.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
+            this.splitContainer3.Panel1.ResumeLayout(false);
+            this.splitContainer3.Panel2.ResumeLayout(false);
+            this.splitContainer3.Panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer3)).EndInit();
+            this.splitContainer3.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.priceNumericUpDown)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.categoryBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.weightNumericUpDown)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.supplierBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.discountNumericUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.stock_levelNumericUpDown)).EndInit();
+            this.panel4.ResumeLayout(false);
+            this.panel4.PerformLayout();
             this.tabCategory.ResumeLayout(false);
             this.splitContainer1.Panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
@@ -989,13 +1184,8 @@
             this.groupBox2.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.categoryBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.supplierBindingSource)).EndInit();
-            this.splitContainer3.Panel1.ResumeLayout(false);
-            this.splitContainer3.Panel2.ResumeLayout(false);
-            this.splitContainer3.Panel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer3)).EndInit();
-            this.splitContainer3.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.errProvider)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.productBindingSource1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1008,26 +1198,59 @@
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.Button button5;
-        private System.Windows.Forms.Button button6;
-        private System.Windows.Forms.Button button7;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnDelete;
+        private System.Windows.Forms.Button btnAdd;
+        private System.Windows.Forms.Button btnImportCSV;
+        private System.Windows.Forms.Button btnFilter;
+        private System.Windows.Forms.Button btnPrint;
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabProduct;
         private System.Windows.Forms.TabPage tabCategory;
         private System.Windows.Forms.SplitContainer splitContainer1;
         private System.Windows.Forms.DataGridView dataGridView1;
         private res.database.dbDataSet dbDataSet;
-        private System.Windows.Forms.BindingSource productBindingSource;
-        private res.database.dbDataSetTableAdapters.ProductTableAdapter productTableAdapter;
-        private res.database.dbDataSetTableAdapters.TableAdapterManager tableAdapterManager;
-        private System.Windows.Forms.BindingSource categoryBindingSource;
-        private res.database.dbDataSetTableAdapters.CategoryTableAdapter categoryTableAdapter;
-        private res.database.dbDataSetTableAdapters.SupplierTableAdapter supplierTableAdapter;
-        private System.Windows.Forms.BindingSource supplierBindingSource;
         private System.Windows.Forms.SplitContainer splitContainer2;
         private System.Windows.Forms.DataGridView dataGridView2;
+        private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.TextBox productIDTextBox;
+        private System.Windows.Forms.TextBox productNameTextBox;
+        private System.Windows.Forms.NumericUpDown priceNumericUpDown;
+        private System.Windows.Forms.ComboBox categoryIDComboBox;
+        private System.Windows.Forms.TextBox descriptionTextBox;
+        private System.Windows.Forms.TextBox colorTextBox;
+        private System.Windows.Forms.ComboBox sizeComboBox;
+        private System.Windows.Forms.NumericUpDown weightNumericUpDown;
+        private System.Windows.Forms.TextBox materialTextBox;
+        private System.Windows.Forms.TextBox designerTextBox;
+        private System.Windows.Forms.TextBox manufacturerTextBox;
+        private System.Windows.Forms.ComboBox supplierIDComboBox;
+        private System.Windows.Forms.DateTimePicker productionDateDateTimePicker;
+        private System.Windows.Forms.NumericUpDown discountNumericUpDown;
+        private System.Windows.Forms.NumericUpDown stock_levelNumericUpDown;
+        private System.Windows.Forms.Button btnReset;
+        private System.Windows.Forms.Button btnUpdate;
+        private System.Windows.Forms.Panel panel4;
+        private System.Windows.Forms.Button btnCancel;
+        private System.Windows.Forms.SplitContainer splitContainer3;
+        private System.Windows.Forms.BindingSource productBindingSource;
+        private System.Windows.Forms.BindingSource bsDataSet;
+        private res.database.dbDataSetTableAdapters.ProductTableAdapter productTableAdapter;
+        private System.Windows.Forms.BindingSource categoryBindingSource;
+        private res.database.dbDataSetTableAdapters.CategoryTableAdapter categoryTableAdapter;
+        private System.Windows.Forms.BindingSource supplierBindingSource;
+        private res.database.dbDataSetTableAdapters.SupplierTableAdapter supplierTableAdapter;
+        private System.Windows.Forms.BindingNavigator bindingNavigator1;
+        private System.Windows.Forms.ToolStripLabel bindingNavigatorCountItem;
+        private System.Windows.Forms.ToolStripButton bindingNavigatorMoveFirstItem;
+        private System.Windows.Forms.ToolStripButton bindingNavigatorMovePreviousItem;
+        private System.Windows.Forms.ToolStripSeparator bindingNavigatorSeparator;
+        private System.Windows.Forms.ToolStripTextBox bindingNavigatorPositionItem;
+        private System.Windows.Forms.ToolStripSeparator bindingNavigatorSeparator1;
+        private System.Windows.Forms.ToolStripButton bindingNavigatorMoveNextItem;
+        private System.Windows.Forms.ToolStripButton bindingNavigatorMoveLastItem;
+        private System.Windows.Forms.ToolStripSeparator bindingNavigatorSeparator2;
+        private System.Windows.Forms.ErrorProvider errProvider;
+        private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.DataGridViewTextBoxColumn productIDDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn productNameDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn priceDataGridViewTextBoxColumn;
@@ -1044,28 +1267,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn discountDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn availableDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn stockLevelDataGridViewTextBoxColumn;
-        private System.Windows.Forms.Panel panel3;
-        private System.Windows.Forms.TextBox productIDTextBox;
-        private System.Windows.Forms.TextBox productNameTextBox;
-        private System.Windows.Forms.NumericUpDown priceNumericUpDown;
-        private System.Windows.Forms.ComboBox categoryIDComboBox;
-        private System.Windows.Forms.TextBox descriptionTextBox;
-        private System.Windows.Forms.TextBox colorTextBox;
-        private System.Windows.Forms.ComboBox sizeComboBox;
-        private System.Windows.Forms.NumericUpDown weightNumericUpDown;
-        private System.Windows.Forms.TextBox materialTextBox;
-        private System.Windows.Forms.TextBox designerTextBox;
-        private System.Windows.Forms.TextBox manufacturerTextBox;
-        private System.Windows.Forms.ComboBox supplierIDComboBox;
-        private System.Windows.Forms.DateTimePicker productionDateDateTimePicker;
-        private System.Windows.Forms.NumericUpDown discountNumericUpDown;
-        private System.Windows.Forms.CheckBox availableCheckBox;
-        private System.Windows.Forms.NumericUpDown stock_levelNumericUpDown;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Panel panel4;
-        private System.Windows.Forms.Button button8;
-        private System.Windows.Forms.SplitContainer splitContainer3;
+        private System.Windows.Forms.BindingSource productBindingSource1;
+        private System.Windows.Forms.Button button1;
 
     }
 }
