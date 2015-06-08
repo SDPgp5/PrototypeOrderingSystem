@@ -59,6 +59,7 @@ namespace Prototype_OrderingSystem_v2
             ucMasterData.getProductBindingSource().Filter = string.Format("StockLevel Like '%{0}%'",stockLevelTextBox.Text);
             ucMasterData.getProductBindingSource().Filter = string.Format("price Like '%{0}%'", priceTextBox.Text);
             ucMasterData.getProductBindingSource().Filter = string.Format("color Like '%{0}%'", colorTextBox.Text);
+            ucMasterData.getProductBindingSource().Filter = string.Format("material Like '%{0}%'", materialTextBox.Text);
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
