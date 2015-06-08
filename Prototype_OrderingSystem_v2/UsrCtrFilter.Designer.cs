@@ -609,7 +609,6 @@
         private System.Windows.Forms.SplitContainer splitContainer1;
         private System.Windows.Forms.ComboBox availableComboBox;
         private System.Windows.Forms.TextBox descriptionTextBox;
-        private res.database.dbDataSet dbDataSet;
         private System.Windows.Forms.Button btnChoose;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Button btnShowHide;
@@ -617,7 +616,6 @@
         private System.Windows.Forms.Button btnCancel;
         private System.Windows.Forms.Button btnOK;
         private System.Windows.Forms.Button btnReset;
-        private res.database.dbDataSetTableAdapters.ProductTableAdapter productTableAdapter;
         private System.Windows.Forms.TextBox priceTextBox;
         private System.Windows.Forms.TextBox stockLevelTextBox;
         private System.Windows.Forms.TextBox discountTextBox;
