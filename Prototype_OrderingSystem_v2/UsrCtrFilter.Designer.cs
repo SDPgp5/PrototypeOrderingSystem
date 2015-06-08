@@ -51,24 +51,24 @@
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.btnShowHide = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.priceTextBox = new System.Windows.Forms.TextBox();
+            this.stockLevelTextBox = new System.Windows.Forms.TextBox();
             this.availableComboBox = new System.Windows.Forms.ComboBox();
             this.categoryIDComboBox = new System.Windows.Forms.ComboBox();
             this.productNameTextBox = new System.Windows.Forms.TextBox();
             this.supplierIDComboBox = new System.Windows.Forms.ComboBox();
             this.productIDTextBox = new System.Windows.Forms.TextBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.discountTextBox = new System.Windows.Forms.TextBox();
+            this.weightTextBox = new System.Windows.Forms.TextBox();
             this.btnChoose = new System.Windows.Forms.Button();
             this.descriptionTextBox = new System.Windows.Forms.TextBox();
             this.designerTextBox = new System.Windows.Forms.TextBox();
-            this.productionDateDateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.manufacturerTextBox = new System.Windows.Forms.TextBox();
             this.materialTextBox = new System.Windows.Forms.TextBox();
             this.sizeComboBox = new System.Windows.Forms.ComboBox();
             this.colorTextBox = new System.Windows.Forms.TextBox();
-            this.stockLevelTextBox = new System.Windows.Forms.TextBox();
-            this.priceTextBox = new System.Windows.Forms.TextBox();
-            this.weightTextBox = new System.Windows.Forms.TextBox();
-            this.discountTextBox = new System.Windows.Forms.TextBox();
+            this.productionDataTextBox = new System.Windows.Forms.TextBox();
             productIDLabel = new System.Windows.Forms.Label();
             productNameLabel = new System.Windows.Forms.Label();
             priceLabel = new System.Windows.Forms.Label();
@@ -388,6 +388,22 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Simple filering option:";
             // 
+            // priceTextBox
+            // 
+            this.priceTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.priceTextBox.Location = new System.Drawing.Point(360, 89);
+            this.priceTextBox.Name = "priceTextBox";
+            this.priceTextBox.Size = new System.Drawing.Size(112, 21);
+            this.priceTextBox.TabIndex = 34;
+            // 
+            // stockLevelTextBox
+            // 
+            this.stockLevelTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.stockLevelTextBox.Location = new System.Drawing.Point(235, 89);
+            this.stockLevelTextBox.Name = "stockLevelTextBox";
+            this.stockLevelTextBox.Size = new System.Drawing.Size(82, 21);
+            this.stockLevelTextBox.TabIndex = 33;
+            // 
             // availableComboBox
             // 
             this.availableComboBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -436,6 +452,7 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.productionDataTextBox);
             this.groupBox2.Controls.Add(this.discountTextBox);
             this.groupBox2.Controls.Add(this.weightTextBox);
             this.groupBox2.Controls.Add(this.btnChoose);
@@ -445,7 +462,6 @@
             this.groupBox2.Controls.Add(materialLabel);
             this.groupBox2.Controls.Add(weightLabel);
             this.groupBox2.Controls.Add(designerLabel);
-            this.groupBox2.Controls.Add(this.productionDateDateTimePicker);
             this.groupBox2.Controls.Add(manufacturerLabel);
             this.groupBox2.Controls.Add(this.manufacturerTextBox);
             this.groupBox2.Controls.Add(discountLabel);
@@ -463,6 +479,22 @@
             this.groupBox2.TabIndex = 34;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Additional filter option:";
+            // 
+            // discountTextBox
+            // 
+            this.discountTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.discountTextBox.Location = new System.Drawing.Point(385, 95);
+            this.discountTextBox.Name = "discountTextBox";
+            this.discountTextBox.Size = new System.Drawing.Size(89, 21);
+            this.discountTextBox.TabIndex = 29;
+            // 
+            // weightTextBox
+            // 
+            this.weightTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.weightTextBox.Location = new System.Drawing.Point(236, 95);
+            this.weightTextBox.Name = "weightTextBox";
+            this.weightTextBox.Size = new System.Drawing.Size(78, 21);
+            this.weightTextBox.TabIndex = 28;
             // 
             // btnChoose
             // 
@@ -495,17 +527,6 @@
             this.designerTextBox.Name = "designerTextBox";
             this.designerTextBox.Size = new System.Drawing.Size(152, 21);
             this.designerTextBox.TabIndex = 19;
-            // 
-            // productionDateDateTimePicker
-            // 
-            this.productionDateDateTimePicker.CalendarFont = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.productionDateDateTimePicker.CustomFormat = "dd/MM/yyyy";
-            this.productionDateDateTimePicker.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.productionDateDateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.productionDateDateTimePicker.Location = new System.Drawing.Point(323, 130);
-            this.productionDateDateTimePicker.Name = "productionDateDateTimePicker";
-            this.productionDateDateTimePicker.Size = new System.Drawing.Size(151, 21);
-            this.productionDateDateTimePicker.TabIndex = 25;
             // 
             // manufacturerTextBox
             // 
@@ -540,37 +561,13 @@
             this.colorTextBox.Size = new System.Drawing.Size(82, 21);
             this.colorTextBox.TabIndex = 11;
             // 
-            // stockLevelTextBox
+            // productionDataTextBox
             // 
-            this.stockLevelTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.stockLevelTextBox.Location = new System.Drawing.Point(235, 89);
-            this.stockLevelTextBox.Name = "stockLevelTextBox";
-            this.stockLevelTextBox.Size = new System.Drawing.Size(82, 21);
-            this.stockLevelTextBox.TabIndex = 33;
-            // 
-            // priceTextBox
-            // 
-            this.priceTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.priceTextBox.Location = new System.Drawing.Point(360, 89);
-            this.priceTextBox.Name = "priceTextBox";
-            this.priceTextBox.Size = new System.Drawing.Size(112, 21);
-            this.priceTextBox.TabIndex = 34;
-            // 
-            // weightTextBox
-            // 
-            this.weightTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.weightTextBox.Location = new System.Drawing.Point(236, 95);
-            this.weightTextBox.Name = "weightTextBox";
-            this.weightTextBox.Size = new System.Drawing.Size(78, 21);
-            this.weightTextBox.TabIndex = 28;
-            // 
-            // discountTextBox
-            // 
-            this.discountTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.discountTextBox.Location = new System.Drawing.Point(385, 95);
-            this.discountTextBox.Name = "discountTextBox";
-            this.discountTextBox.Size = new System.Drawing.Size(89, 21);
-            this.discountTextBox.TabIndex = 29;
+            this.productionDataTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.productionDataTextBox.Location = new System.Drawing.Point(323, 129);
+            this.productionDataTextBox.Name = "productionDataTextBox";
+            this.productionDataTextBox.Size = new System.Drawing.Size(151, 21);
+            this.productionDataTextBox.TabIndex = 35;
             // 
             // UsrCtrFilter
             // 
@@ -609,7 +606,6 @@
         private System.Windows.Forms.TextBox designerTextBox;
         private System.Windows.Forms.TextBox manufacturerTextBox;
         private System.Windows.Forms.ComboBox supplierIDComboBox;
-        private System.Windows.Forms.DateTimePicker productionDateDateTimePicker;
         private System.Windows.Forms.SplitContainer splitContainer1;
         private System.Windows.Forms.ComboBox availableComboBox;
         private System.Windows.Forms.TextBox descriptionTextBox;
@@ -626,5 +622,6 @@
         private System.Windows.Forms.TextBox stockLevelTextBox;
         private System.Windows.Forms.TextBox discountTextBox;
         private System.Windows.Forms.TextBox weightTextBox;
+        private System.Windows.Forms.TextBox productionDataTextBox;
     }
 }
