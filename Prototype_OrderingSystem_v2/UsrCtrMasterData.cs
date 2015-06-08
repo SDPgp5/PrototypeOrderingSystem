@@ -135,9 +135,11 @@ namespace Prototype_OrderingSystem_v2
 
         private void btnFilter_Click(object sender, EventArgs e)
         {
-            //UsrCtrFilter ucFilter = new UsrCtrFilter();
-           // ucFilter.Dock = DockStyle.Bottom;
-           // this.Controls.Add(ucFilter);
+            UsrCtrFilter ucFilter = new UsrCtrFilter();
+            ucFilter.Dock = DockStyle.Fill;
+            this.Controls.Add(ucFilter);
+            ucFilter.BringToFront();
+            Console.WriteLine("Show");
         }
 
 

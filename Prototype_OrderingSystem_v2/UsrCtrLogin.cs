@@ -19,7 +19,7 @@ namespace Prototype_OrderingSystem_v2
         private void btnLogin_Click(object sender, EventArgs e)
         {
             UsrCtrMasterData ucMasterData = new UsrCtrMasterData();
-            ucMasterData.Dock = DockStyle.Fill;
+           // ucMasterData.Dock = DockStyle.Fill;
             this.Controls.Add(ucMasterData);
             ucMasterData.BringToFront();
             Console.WriteLine("Add MasterData");

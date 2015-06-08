@@ -73,9 +73,9 @@
             this.materialTextBox = new System.Windows.Forms.TextBox();
             this.sizeComboBox = new System.Windows.Forms.ComboBox();
             this.colorTextBox = new System.Windows.Forms.TextBox();
-            this.productBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dbDataSet = new Prototype_OrderingSystem_v2.res.database.dbDataSet();
             this.productTableAdapter = new Prototype_OrderingSystem_v2.res.database.dbDataSetTableAdapters.ProductTableAdapter();
+            this.productBindingSource = new System.Windows.Forms.BindingSource(this.components);
             productIDLabel = new System.Windows.Forms.Label();
             productNameLabel = new System.Windows.Forms.Label();
             priceLabel = new System.Windows.Forms.Label();
@@ -104,8 +104,8 @@
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.discountNumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.weightNumericUpDown)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.productBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dbDataSet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.productBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // productIDLabel
@@ -294,7 +294,7 @@
             this.panel1.Controls.Add(this.button5);
             this.panel1.Controls.Add(this.panel2);
             this.panel1.Controls.Add(this.splitContainer1);
-            this.panel1.Location = new System.Drawing.Point(3, 3);
+            this.panel1.Location = new System.Drawing.Point(35, 23);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(595, 395);
             this.panel1.TabIndex = 0;
@@ -306,7 +306,7 @@
             this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
             this.button4.ForeColor = System.Drawing.Color.White;
-            this.button4.Location = new System.Drawing.Point(519, 149);
+            this.button4.Location = new System.Drawing.Point(519, 141);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(64, 23);
             this.button4.TabIndex = 37;
@@ -320,7 +320,7 @@
             this.button6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
             this.button6.ForeColor = System.Drawing.Color.White;
-            this.button6.Location = new System.Drawing.Point(519, 73);
+            this.button6.Location = new System.Drawing.Point(519, 65);
             this.button6.Name = "button6";
             this.button6.Size = new System.Drawing.Size(64, 23);
             this.button6.TabIndex = 36;
@@ -334,7 +334,7 @@
             this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
             this.button5.ForeColor = System.Drawing.Color.White;
-            this.button5.Location = new System.Drawing.Point(519, 111);
+            this.button5.Location = new System.Drawing.Point(519, 103);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(64, 23);
             this.button5.TabIndex = 35;
@@ -354,11 +354,11 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.Firebrick;
             this.label1.Location = new System.Drawing.Point(204, 3);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(157, 24);
+            this.label1.Size = new System.Drawing.Size(142, 24);
             this.label1.TabIndex = 35;
             this.label1.Text = "Advanced Filter";
             // 
@@ -635,10 +635,6 @@
             this.colorTextBox.Size = new System.Drawing.Size(82, 21);
             this.colorTextBox.TabIndex = 11;
             // 
-            // productBindingSource
-            // 
-            this.productBindingSource.DataMember = "Product";
-            // 
             // dbDataSet
             // 
             this.dbDataSet.DataSetName = "dbDataSet";
@@ -648,16 +644,21 @@
             // 
             this.productTableAdapter.ClearBeforeFill = true;
             // 
+            // productBindingSource
+            // 
+            this.productBindingSource.DataMember = "Product";
+            // 
             // UsrCtrFilter
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.AutoSize = true;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.BackColor = System.Drawing.SystemColors.Control;
+            this.BackColor = System.Drawing.Color.Transparent;
             this.Controls.Add(this.panel1);
             this.Name = "UsrCtrFilter";
-            this.Size = new System.Drawing.Size(601, 401);
+            this.Size = new System.Drawing.Size(633, 421);
+            this.Load += new System.EventHandler(this.UsrCtrFilter_Load);
             this.panel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
@@ -673,8 +674,8 @@
             this.groupBox2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.discountNumericUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.weightNumericUpDown)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.productBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dbDataSet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.productBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
