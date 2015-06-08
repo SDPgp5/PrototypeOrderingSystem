@@ -21,7 +21,7 @@ namespace Prototype_OrderingSystem_v2
             this.productTableAdapter.Fill(this.dbDataSet.Product);
             this.supplierTableAdapter.Fill(this.dbDataSet.Supplier);
         }
-
+        //
         private void btnUpdate_Click(object sender, EventArgs e)
         {
                 try
