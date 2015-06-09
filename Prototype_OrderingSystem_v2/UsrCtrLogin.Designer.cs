@@ -31,8 +31,8 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UsrCtrLogin));
             this.panBaseLogin = new System.Windows.Forms.Panel();
             this.panLogin = new System.Windows.Forms.Panel();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtPassword = new System.Windows.Forms.TextBox();
+            this.txtStaffID = new System.Windows.Forms.TextBox();
             this.lblPassword = new System.Windows.Forms.Label();
             this.lblStaffID = new System.Windows.Forms.Label();
             this.btnLogin = new System.Windows.Forms.Button();
@@ -48,8 +48,7 @@
             this.panBaseLogin.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
             this.panBaseLogin.Controls.Add(this.panLogin);
             this.panBaseLogin.Controls.Add(this.pictureBox1);
-            this.panBaseLogin.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panBaseLogin.Location = new System.Drawing.Point(0, 0);
+            this.panBaseLogin.Location = new System.Drawing.Point(3, 33);
             this.panBaseLogin.Name = "panBaseLogin";
             this.panBaseLogin.Size = new System.Drawing.Size(583, 384);
             this.panBaseLogin.TabIndex = 0;
@@ -60,8 +59,8 @@
             this.panLogin.AutoSize = true;
             this.panLogin.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.panLogin.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.panLogin.Controls.Add(this.textBox2);
-            this.panLogin.Controls.Add(this.textBox1);
+            this.panLogin.Controls.Add(this.txtPassword);
+            this.panLogin.Controls.Add(this.txtStaffID);
             this.panLogin.Controls.Add(this.lblPassword);
             this.panLogin.Controls.Add(this.lblStaffID);
             this.panLogin.Controls.Add(this.btnLogin);
@@ -70,22 +69,22 @@
             this.panLogin.Size = new System.Drawing.Size(331, 163);
             this.panLogin.TabIndex = 6;
             // 
-            // textBox2
+            // txtPassword
             // 
-            this.textBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox2.Location = new System.Drawing.Point(109, 84);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(187, 22);
-            this.textBox2.TabIndex = 4;
-            this.textBox2.UseSystemPasswordChar = true;
+            this.txtPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtPassword.Location = new System.Drawing.Point(109, 84);
+            this.txtPassword.Name = "txtPassword";
+            this.txtPassword.Size = new System.Drawing.Size(187, 22);
+            this.txtPassword.TabIndex = 4;
+            this.txtPassword.UseSystemPasswordChar = true;
             // 
-            // textBox1
+            // txtStaffID
             // 
-            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(109, 39);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(187, 22);
-            this.textBox1.TabIndex = 3;
+            this.txtStaffID.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtStaffID.Location = new System.Drawing.Point(109, 39);
+            this.txtStaffID.Name = "txtStaffID";
+            this.txtStaffID.Size = new System.Drawing.Size(187, 22);
+            this.txtStaffID.TabIndex = 3;
             // 
             // lblPassword
             // 
@@ -141,7 +140,8 @@
             this.BackColor = System.Drawing.SystemColors.Control;
             this.Controls.Add(this.panBaseLogin);
             this.Name = "UsrCtrLogin";
-            this.Size = new System.Drawing.Size(583, 384);
+            this.Size = new System.Drawing.Size(589, 420);
+            this.Load += new System.EventHandler(this.UsrCtrLogin_Load);
             this.panBaseLogin.ResumeLayout(false);
             this.panBaseLogin.PerformLayout();
             this.panLogin.ResumeLayout(false);
@@ -156,8 +156,8 @@
 
         private System.Windows.Forms.Panel panBaseLogin;
         private System.Windows.Forms.Panel panLogin;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtPassword;
+        private System.Windows.Forms.TextBox txtStaffID;
         private System.Windows.Forms.Label lblPassword;
         private System.Windows.Forms.Label lblStaffID;
         private System.Windows.Forms.Button btnLogin;

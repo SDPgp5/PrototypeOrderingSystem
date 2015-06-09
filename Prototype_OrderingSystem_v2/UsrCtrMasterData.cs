@@ -11,8 +11,10 @@ namespace Prototype_OrderingSystem_v2
 {
     public partial class UsrCtrMasterData : UserControl
     {
+
         public UsrCtrMasterData()
         {
+
             InitializeComponent();
         }
 
@@ -69,7 +71,7 @@ namespace Prototype_OrderingSystem_v2
             {
                 foreach (DataRow row in this.dbDataSet.Product)
                 {
-                    Console.WriteLine("ID:" + startingID + "VS" + row[0]);
+                   // Console.WriteLine("ID:" + startingID + "VS" + row[0]);
                     if (startingID.Equals(row[0]))
                     {
                         startingID = preID + (++startingPoint).ToString(format);
@@ -140,6 +142,22 @@ namespace Prototype_OrderingSystem_v2
             this.Controls.Add(ucFilter);
             ucFilter.BringToFront();
             Console.WriteLine("Show");
+        }
+
+        private void txtEnquiry_TextChanged(object sender, EventArgs e)
+        {
+            productBindingSource.Filter = "productID = '"+txtEnquiry.Text+"'";
+            dataGridView1.DataSource = productBindingSource;
+        }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+
         }
 
 

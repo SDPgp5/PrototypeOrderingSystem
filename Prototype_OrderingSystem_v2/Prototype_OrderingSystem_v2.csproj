@@ -74,6 +74,10 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>cn.resx</DependentUpon>
     </Compile>
+    <Compile Include="res\database\dbDataSet.cs">
+      <DependentUpon>dbDataSet.xsd</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="res\database\dbDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -101,6 +105,24 @@
     </Compile>
     <Compile Include="UsrCtrMasterData.Designer.cs">
       <DependentUpon>UsrCtrMasterData.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UsrCtrMenu.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UsrCtrMenu.Designer.cs">
+      <DependentUpon>UsrCtrMenu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UsrCtrMenu2.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UsrCtrMenu2.Designer.cs">
+      <DependentUpon>UsrCtrMenu2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UsrCtrProductCategory.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UsrCtrProductCategory.Designer.cs">
+      <DependentUpon>UsrCtrProductCategory.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="FrmMain.resx">
       <DependentUpon>FrmMain.cs</DependentUpon>
@@ -132,7 +154,17 @@
     <EmbeddedResource Include="UsrCtrMasterData.resx">
       <DependentUpon>UsrCtrMasterData.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UsrCtrMenu.resx">
+      <DependentUpon>UsrCtrMenu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UsrCtrMenu2.resx">
+      <DependentUpon>UsrCtrMenu2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UsrCtrProductCategory.resx">
+      <DependentUpon>UsrCtrProductCategory.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="app.config" />
+    <None Include="ClassDiagram1.cd" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
