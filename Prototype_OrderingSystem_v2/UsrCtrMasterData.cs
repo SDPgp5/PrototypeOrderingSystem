@@ -142,7 +142,7 @@ namespace Prototype_OrderingSystem_v2
 
         private void btnFilter_Click(object sender, EventArgs e)
         {
-            frmFilter.Show();
+            frmFilter.ShowDialog();
             frmFilter.Focus();
         }
 
