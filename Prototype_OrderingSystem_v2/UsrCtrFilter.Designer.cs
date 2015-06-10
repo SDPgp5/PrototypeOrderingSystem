@@ -46,36 +46,35 @@
             System.Windows.Forms.Label stock_levelLabel;
             System.Windows.Forms.Label descriptionLabel;
             this.panel1 = new System.Windows.Forms.Panel();
-            this.button4 = new System.Windows.Forms.Button();
-            this.button6 = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.label1 = new System.Windows.Forms.Label();
-            this.button3 = new System.Windows.Forms.Button();
+            this.btnCancel = new System.Windows.Forms.Button();
+            this.btnOK = new System.Windows.Forms.Button();
+            this.btnReset = new System.Windows.Forms.Button();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.btnShowHide = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.categoryIDComboBox = new System.Windows.Forms.ComboBox();
-            this.stock_levelNumericUpDown = new System.Windows.Forms.NumericUpDown();
+            this.priceTextBox = new System.Windows.Forms.TextBox();
+            this.stockLevelTextBox = new System.Windows.Forms.TextBox();
+            this.availableComboBox = new System.Windows.Forms.ComboBox();
+            this.categoryBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.dbDataSet = new Prototype_OrderingSystem_v2.res.database.dbDataSet();
             this.productNameTextBox = new System.Windows.Forms.TextBox();
-            this.supplierIDComboBox = new System.Windows.Forms.ComboBox();
+            this.supplierBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.productIDTextBox = new System.Windows.Forms.TextBox();
-            this.priceNumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.discountNumericUpDown = new System.Windows.Forms.NumericUpDown();
+            this.productionDataTextBox = new System.Windows.Forms.TextBox();
+            this.discountTextBox = new System.Windows.Forms.TextBox();
+            this.weightTextBox = new System.Windows.Forms.TextBox();
+            this.btnChoose = new System.Windows.Forms.Button();
             this.descriptionTextBox = new System.Windows.Forms.TextBox();
             this.designerTextBox = new System.Windows.Forms.TextBox();
-            this.productionDateDateTimePicker = new System.Windows.Forms.DateTimePicker();
-            this.weightNumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.manufacturerTextBox = new System.Windows.Forms.TextBox();
             this.materialTextBox = new System.Windows.Forms.TextBox();
             this.sizeComboBox = new System.Windows.Forms.ComboBox();
             this.colorTextBox = new System.Windows.Forms.TextBox();
-            this.dbDataSet = new Prototype_OrderingSystem_v2.res.database.dbDataSet();
-            this.productTableAdapter = new Prototype_OrderingSystem_v2.res.database.dbDataSetTableAdapters.ProductTableAdapter();
-            this.productBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.supplierTableAdapter = new Prototype_OrderingSystem_v2.res.database.dbDataSetTableAdapters.SupplierTableAdapter();
+            this.categoryTableAdapter = new Prototype_OrderingSystem_v2.res.database.dbDataSetTableAdapters.CategoryTableAdapter();
+            this.categoryIDTextBox = new System.Windows.Forms.TextBox();
+            this.supplierIDTextBox = new System.Windows.Forms.TextBox();
             productIDLabel = new System.Windows.Forms.Label();
             productNameLabel = new System.Windows.Forms.Label();
             priceLabel = new System.Windows.Forms.Label();
@@ -93,19 +92,15 @@
             stock_levelLabel = new System.Windows.Forms.Label();
             descriptionLabel = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
-            this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
             this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.stock_levelNumericUpDown)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.priceNumericUpDown)).BeginInit();
-            this.groupBox2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.discountNumericUpDown)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.weightNumericUpDown)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.categoryBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dbDataSet)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.productBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.supplierBindingSource)).BeginInit();
+            this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
             // productIDLabel
@@ -245,7 +240,7 @@
             discountLabel.AutoSize = true;
             discountLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             discountLabel.ForeColor = System.Drawing.Color.Black;
-            discountLabel.Location = new System.Drawing.Point(320, 98);
+            discountLabel.Location = new System.Drawing.Point(323, 98);
             discountLabel.Name = "discountLabel";
             discountLabel.Size = new System.Drawing.Size(56, 15);
             discountLabel.TabIndex = 26;
@@ -289,97 +284,64 @@
             this.panel1.AutoSize = true;
             this.panel1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.panel1.BackColor = System.Drawing.Color.White;
-            this.panel1.Controls.Add(this.button4);
-            this.panel1.Controls.Add(this.button6);
-            this.panel1.Controls.Add(this.button5);
-            this.panel1.Controls.Add(this.panel2);
+            this.panel1.Controls.Add(this.btnCancel);
+            this.panel1.Controls.Add(this.btnOK);
+            this.panel1.Controls.Add(this.btnReset);
             this.panel1.Controls.Add(this.splitContainer1);
-            this.panel1.Location = new System.Drawing.Point(35, 23);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(595, 395);
+            this.panel1.Size = new System.Drawing.Size(583, 370);
             this.panel1.TabIndex = 0;
             // 
-            // button4
+            // btnCancel
             // 
-            this.button4.BackColor = System.Drawing.Color.IndianRed;
-            this.button4.FlatAppearance.BorderSize = 0;
-            this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
-            this.button4.ForeColor = System.Drawing.Color.White;
-            this.button4.Location = new System.Drawing.Point(519, 141);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(64, 23);
-            this.button4.TabIndex = 37;
-            this.button4.Text = "Cancel";
-            this.button4.UseVisualStyleBackColor = false;
+            this.btnCancel.BackColor = System.Drawing.Color.IndianRed;
+            this.btnCancel.FlatAppearance.BorderSize = 0;
+            this.btnCancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCancel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
+            this.btnCancel.ForeColor = System.Drawing.Color.White;
+            this.btnCancel.Location = new System.Drawing.Point(516, 116);
+            this.btnCancel.Name = "btnCancel";
+            this.btnCancel.Size = new System.Drawing.Size(64, 23);
+            this.btnCancel.TabIndex = 37;
+            this.btnCancel.Text = "Cancel";
+            this.btnCancel.UseVisualStyleBackColor = false;
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
-            // button6
+            // btnOK
             // 
-            this.button6.BackColor = System.Drawing.Color.IndianRed;
-            this.button6.FlatAppearance.BorderSize = 0;
-            this.button6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
-            this.button6.ForeColor = System.Drawing.Color.White;
-            this.button6.Location = new System.Drawing.Point(519, 65);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(64, 23);
-            this.button6.TabIndex = 36;
-            this.button6.Text = "OK";
-            this.button6.UseVisualStyleBackColor = false;
+            this.btnOK.BackColor = System.Drawing.Color.IndianRed;
+            this.btnOK.FlatAppearance.BorderSize = 0;
+            this.btnOK.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnOK.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
+            this.btnOK.ForeColor = System.Drawing.Color.White;
+            this.btnOK.Location = new System.Drawing.Point(516, 40);
+            this.btnOK.Name = "btnOK";
+            this.btnOK.Size = new System.Drawing.Size(64, 23);
+            this.btnOK.TabIndex = 36;
+            this.btnOK.Text = "OK";
+            this.btnOK.UseVisualStyleBackColor = false;
+            this.btnOK.Click += new System.EventHandler(this.btnOK_Click);
             // 
-            // button5
+            // btnReset
             // 
-            this.button5.BackColor = System.Drawing.Color.IndianRed;
-            this.button5.FlatAppearance.BorderSize = 0;
-            this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
-            this.button5.ForeColor = System.Drawing.Color.White;
-            this.button5.Location = new System.Drawing.Point(519, 103);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(64, 23);
-            this.button5.TabIndex = 35;
-            this.button5.Text = "Reset";
-            this.button5.UseVisualStyleBackColor = false;
-            // 
-            // panel2
-            // 
-            this.panel2.BackColor = System.Drawing.Color.SandyBrown;
-            this.panel2.Controls.Add(this.label1);
-            this.panel2.Controls.Add(this.button3);
-            this.panel2.Location = new System.Drawing.Point(1, 0);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(591, 29);
-            this.panel2.TabIndex = 33;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.Firebrick;
-            this.label1.Location = new System.Drawing.Point(204, 3);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(142, 24);
-            this.label1.TabIndex = 35;
-            this.label1.Text = "Advanced Filter";
-            // 
-            // button3
-            // 
-            this.button3.BackColor = System.Drawing.Color.IndianRed;
-            this.button3.FlatAppearance.BorderSize = 0;
-            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button3.ForeColor = System.Drawing.Color.White;
-            this.button3.Location = new System.Drawing.Point(527, 0);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(64, 27);
-            this.button3.TabIndex = 34;
-            this.button3.Text = "Close";
-            this.button3.UseVisualStyleBackColor = false;
+            this.btnReset.BackColor = System.Drawing.Color.IndianRed;
+            this.btnReset.FlatAppearance.BorderSize = 0;
+            this.btnReset.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnReset.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
+            this.btnReset.ForeColor = System.Drawing.Color.White;
+            this.btnReset.Location = new System.Drawing.Point(516, 78);
+            this.btnReset.Name = "btnReset";
+            this.btnReset.Size = new System.Drawing.Size(64, 23);
+            this.btnReset.TabIndex = 35;
+            this.btnReset.Text = "Reset";
+            this.btnReset.UseVisualStyleBackColor = false;
             // 
             // splitContainer1
             // 
             this.splitContainer1.IsSplitterFixed = true;
-            this.splitContainer1.Location = new System.Drawing.Point(19, 49);
+            this.splitContainer1.Location = new System.Drawing.Point(19, 24);
             this.splitContainer1.Name = "splitContainer1";
             this.splitContainer1.Orientation = System.Windows.Forms.Orientation.Horizontal;
             // 
@@ -412,20 +374,20 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.comboBox1);
-            this.groupBox1.Controls.Add(this.categoryIDComboBox);
+            this.groupBox1.Controls.Add(this.supplierIDTextBox);
+            this.groupBox1.Controls.Add(this.categoryIDTextBox);
+            this.groupBox1.Controls.Add(this.priceTextBox);
+            this.groupBox1.Controls.Add(this.stockLevelTextBox);
+            this.groupBox1.Controls.Add(this.availableComboBox);
             this.groupBox1.Controls.Add(categoryIDLabel);
-            this.groupBox1.Controls.Add(this.stock_levelNumericUpDown);
             this.groupBox1.Controls.Add(this.productNameTextBox);
             this.groupBox1.Controls.Add(availableLabel);
-            this.groupBox1.Controls.Add(this.supplierIDComboBox);
             this.groupBox1.Controls.Add(this.productIDTextBox);
             this.groupBox1.Controls.Add(productNameLabel);
             this.groupBox1.Controls.Add(priceLabel);
             this.groupBox1.Controls.Add(supplierIDLabel);
             this.groupBox1.Controls.Add(productIDLabel);
             this.groupBox1.Controls.Add(stock_levelLabel);
-            this.groupBox1.Controls.Add(this.priceNumericUpDown);
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.ForeColor = System.Drawing.Color.LightCoral;
             this.groupBox1.Location = new System.Drawing.Point(3, 4);
@@ -435,35 +397,43 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Simple filering option:";
             // 
-            // comboBox1
+            // priceTextBox
             // 
-            this.comboBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Items.AddRange(new object[] {
+            this.priceTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.priceTextBox.Location = new System.Drawing.Point(360, 89);
+            this.priceTextBox.Name = "priceTextBox";
+            this.priceTextBox.Size = new System.Drawing.Size(112, 21);
+            this.priceTextBox.TabIndex = 34;
+            // 
+            // stockLevelTextBox
+            // 
+            this.stockLevelTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.stockLevelTextBox.Location = new System.Drawing.Point(235, 89);
+            this.stockLevelTextBox.Name = "stockLevelTextBox";
+            this.stockLevelTextBox.Size = new System.Drawing.Size(82, 21);
+            this.stockLevelTextBox.TabIndex = 33;
+            // 
+            // availableComboBox
+            // 
+            this.availableComboBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.availableComboBox.FormattingEnabled = true;
+            this.availableComboBox.Items.AddRange(new object[] {
             "N",
             "A"});
-            this.comboBox1.Location = new System.Drawing.Point(76, 89);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(82, 23);
-            this.comboBox1.TabIndex = 32;
+            this.availableComboBox.Location = new System.Drawing.Point(76, 89);
+            this.availableComboBox.Name = "availableComboBox";
+            this.availableComboBox.Size = new System.Drawing.Size(82, 23);
+            this.availableComboBox.TabIndex = 32;
             // 
-            // categoryIDComboBox
+            // categoryBindingSource
             // 
-            this.categoryIDComboBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.categoryIDComboBox.FormattingEnabled = true;
-            this.categoryIDComboBox.Location = new System.Drawing.Point(76, 53);
-            this.categoryIDComboBox.Name = "categoryIDComboBox";
-            this.categoryIDComboBox.Size = new System.Drawing.Size(152, 23);
-            this.categoryIDComboBox.TabIndex = 7;
+            this.categoryBindingSource.DataMember = "Category";
+            this.categoryBindingSource.DataSource = this.dbDataSet;
             // 
-            // stock_levelNumericUpDown
+            // dbDataSet
             // 
-            this.stock_levelNumericUpDown.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.stock_levelNumericUpDown.Location = new System.Drawing.Point(236, 91);
-            this.stock_levelNumericUpDown.Name = "stock_levelNumericUpDown";
-            this.stock_levelNumericUpDown.Size = new System.Drawing.Size(62, 21);
-            this.stock_levelNumericUpDown.TabIndex = 31;
-            this.stock_levelNumericUpDown.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.dbDataSet.DataSetName = "dbDataSet";
+            this.dbDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // productNameTextBox
             // 
@@ -473,14 +443,10 @@
             this.productNameTextBox.Size = new System.Drawing.Size(152, 21);
             this.productNameTextBox.TabIndex = 3;
             // 
-            // supplierIDComboBox
+            // supplierBindingSource
             // 
-            this.supplierIDComboBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.supplierIDComboBox.FormattingEnabled = true;
-            this.supplierIDComboBox.Location = new System.Drawing.Point(320, 53);
-            this.supplierIDComboBox.Name = "supplierIDComboBox";
-            this.supplierIDComboBox.Size = new System.Drawing.Size(152, 23);
-            this.supplierIDComboBox.TabIndex = 23;
+            this.supplierBindingSource.DataMember = "Supplier";
+            this.supplierBindingSource.DataSource = this.dbDataSet;
             // 
             // productIDTextBox
             // 
@@ -490,34 +456,19 @@
             this.productIDTextBox.Size = new System.Drawing.Size(152, 21);
             this.productIDTextBox.TabIndex = 1;
             // 
-            // priceNumericUpDown
-            // 
-            this.priceNumericUpDown.DecimalPlaces = 2;
-            this.priceNumericUpDown.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.priceNumericUpDown.Location = new System.Drawing.Point(369, 90);
-            this.priceNumericUpDown.Maximum = new decimal(new int[] {
-            9999999,
-            0,
-            0,
-            0});
-            this.priceNumericUpDown.Name = "priceNumericUpDown";
-            this.priceNumericUpDown.Size = new System.Drawing.Size(102, 21);
-            this.priceNumericUpDown.TabIndex = 5;
-            this.priceNumericUpDown.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.button1);
-            this.groupBox2.Controls.Add(this.discountNumericUpDown);
+            this.groupBox2.Controls.Add(this.productionDataTextBox);
+            this.groupBox2.Controls.Add(this.discountTextBox);
+            this.groupBox2.Controls.Add(this.weightTextBox);
+            this.groupBox2.Controls.Add(this.btnChoose);
             this.groupBox2.Controls.Add(this.descriptionTextBox);
             this.groupBox2.Controls.Add(this.designerTextBox);
             this.groupBox2.Controls.Add(productionDateLabel);
             this.groupBox2.Controls.Add(materialLabel);
             this.groupBox2.Controls.Add(weightLabel);
             this.groupBox2.Controls.Add(designerLabel);
-            this.groupBox2.Controls.Add(this.productionDateDateTimePicker);
             this.groupBox2.Controls.Add(manufacturerLabel);
-            this.groupBox2.Controls.Add(this.weightNumericUpDown);
             this.groupBox2.Controls.Add(this.manufacturerTextBox);
             this.groupBox2.Controls.Add(discountLabel);
             this.groupBox2.Controls.Add(this.materialTextBox);
@@ -535,28 +486,43 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Additional filter option:";
             // 
-            // button1
+            // productionDataTextBox
             // 
-            this.button1.BackColor = System.Drawing.Color.IndianRed;
-            this.button1.FlatAppearance.BorderSize = 0;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
-            this.button1.ForeColor = System.Drawing.Color.White;
-            this.button1.Location = new System.Drawing.Point(167, 25);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(64, 23);
-            this.button1.TabIndex = 12;
-            this.button1.Text = "Choose";
-            this.button1.UseVisualStyleBackColor = false;
+            this.productionDataTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.productionDataTextBox.Location = new System.Drawing.Point(323, 129);
+            this.productionDataTextBox.Name = "productionDataTextBox";
+            this.productionDataTextBox.Size = new System.Drawing.Size(151, 21);
+            this.productionDataTextBox.TabIndex = 35;
             // 
-            // discountNumericUpDown
+            // discountTextBox
             // 
-            this.discountNumericUpDown.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.discountNumericUpDown.Location = new System.Drawing.Point(385, 93);
-            this.discountNumericUpDown.Name = "discountNumericUpDown";
-            this.discountNumericUpDown.Size = new System.Drawing.Size(89, 21);
-            this.discountNumericUpDown.TabIndex = 27;
-            this.discountNumericUpDown.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.discountTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.discountTextBox.Location = new System.Drawing.Point(385, 95);
+            this.discountTextBox.Name = "discountTextBox";
+            this.discountTextBox.Size = new System.Drawing.Size(89, 21);
+            this.discountTextBox.TabIndex = 29;
+            // 
+            // weightTextBox
+            // 
+            this.weightTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.weightTextBox.Location = new System.Drawing.Point(236, 95);
+            this.weightTextBox.Name = "weightTextBox";
+            this.weightTextBox.Size = new System.Drawing.Size(78, 21);
+            this.weightTextBox.TabIndex = 28;
+            // 
+            // btnChoose
+            // 
+            this.btnChoose.BackColor = System.Drawing.Color.IndianRed;
+            this.btnChoose.FlatAppearance.BorderSize = 0;
+            this.btnChoose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnChoose.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
+            this.btnChoose.ForeColor = System.Drawing.Color.White;
+            this.btnChoose.Location = new System.Drawing.Point(167, 25);
+            this.btnChoose.Name = "btnChoose";
+            this.btnChoose.Size = new System.Drawing.Size(64, 23);
+            this.btnChoose.TabIndex = 12;
+            this.btnChoose.Text = "Choose";
+            this.btnChoose.UseVisualStyleBackColor = false;
             // 
             // descriptionTextBox
             // 
@@ -575,32 +541,6 @@
             this.designerTextBox.Name = "designerTextBox";
             this.designerTextBox.Size = new System.Drawing.Size(152, 21);
             this.designerTextBox.TabIndex = 19;
-            // 
-            // productionDateDateTimePicker
-            // 
-            this.productionDateDateTimePicker.CalendarFont = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.productionDateDateTimePicker.CustomFormat = "dd/MM/yyyy";
-            this.productionDateDateTimePicker.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.productionDateDateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.productionDateDateTimePicker.Location = new System.Drawing.Point(326, 130);
-            this.productionDateDateTimePicker.Name = "productionDateDateTimePicker";
-            this.productionDateDateTimePicker.Size = new System.Drawing.Size(148, 21);
-            this.productionDateDateTimePicker.TabIndex = 25;
-            // 
-            // weightNumericUpDown
-            // 
-            this.weightNumericUpDown.DecimalPlaces = 2;
-            this.weightNumericUpDown.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.weightNumericUpDown.Location = new System.Drawing.Point(240, 95);
-            this.weightNumericUpDown.Maximum = new decimal(new int[] {
-            9999,
-            0,
-            0,
-            0});
-            this.weightNumericUpDown.Name = "weightNumericUpDown";
-            this.weightNumericUpDown.Size = new System.Drawing.Size(66, 21);
-            this.weightNumericUpDown.TabIndex = 15;
-            this.weightNumericUpDown.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // manufacturerTextBox
             // 
@@ -635,18 +575,27 @@
             this.colorTextBox.Size = new System.Drawing.Size(82, 21);
             this.colorTextBox.TabIndex = 11;
             // 
-            // dbDataSet
+            // supplierTableAdapter
             // 
-            this.dbDataSet.DataSetName = "dbDataSet";
-            this.dbDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            this.supplierTableAdapter.ClearBeforeFill = true;
             // 
-            // productTableAdapter
+            // categoryTableAdapter
             // 
-            this.productTableAdapter.ClearBeforeFill = true;
+            this.categoryTableAdapter.ClearBeforeFill = true;
             // 
-            // productBindingSource
+            // categoryIDTextBox
             // 
-            this.productBindingSource.DataMember = "Product";
+            this.categoryIDTextBox.Location = new System.Drawing.Point(76, 53);
+            this.categoryIDTextBox.Name = "categoryIDTextBox";
+            this.categoryIDTextBox.Size = new System.Drawing.Size(152, 24);
+            this.categoryIDTextBox.TabIndex = 35;
+            // 
+            // supplierIDTextBox
+            // 
+            this.supplierIDTextBox.Location = new System.Drawing.Point(320, 53);
+            this.supplierIDTextBox.Name = "supplierIDTextBox";
+            this.supplierIDTextBox.Size = new System.Drawing.Size(152, 24);
+            this.supplierIDTextBox.TabIndex = 36;
             // 
             // UsrCtrFilter
             // 
@@ -657,25 +606,20 @@
             this.BackColor = System.Drawing.Color.Transparent;
             this.Controls.Add(this.panel1);
             this.Name = "UsrCtrFilter";
-            this.Size = new System.Drawing.Size(633, 421);
+            this.Size = new System.Drawing.Size(583, 370);
             this.Load += new System.EventHandler(this.UsrCtrFilter_Load);
             this.panel1.ResumeLayout(false);
-            this.panel2.ResumeLayout(false);
-            this.panel2.PerformLayout();
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.stock_levelNumericUpDown)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.priceNumericUpDown)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.categoryBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dbDataSet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.supplierBindingSource)).EndInit();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.discountNumericUpDown)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.weightNumericUpDown)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dbDataSet)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.productBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -686,33 +630,32 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.TextBox productIDTextBox;
         private System.Windows.Forms.TextBox productNameTextBox;
-        private System.Windows.Forms.NumericUpDown priceNumericUpDown;
-        private System.Windows.Forms.ComboBox categoryIDComboBox;
         private System.Windows.Forms.TextBox colorTextBox;
         private System.Windows.Forms.ComboBox sizeComboBox;
-        private System.Windows.Forms.NumericUpDown weightNumericUpDown;
         private System.Windows.Forms.TextBox materialTextBox;
         private System.Windows.Forms.TextBox designerTextBox;
         private System.Windows.Forms.TextBox manufacturerTextBox;
-        private System.Windows.Forms.ComboBox supplierIDComboBox;
-        private System.Windows.Forms.DateTimePicker productionDateDateTimePicker;
-        private System.Windows.Forms.NumericUpDown discountNumericUpDown;
-        private System.Windows.Forms.NumericUpDown stock_levelNumericUpDown;
-        private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.SplitContainer splitContainer1;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox availableComboBox;
         private System.Windows.Forms.TextBox descriptionTextBox;
-        private System.Windows.Forms.BindingSource productBindingSource;
-        private res.database.dbDataSet dbDataSet;
-        private res.database.dbDataSetTableAdapters.ProductTableAdapter productTableAdapter;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnChoose;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button btnShowHide;
         private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.Button button6;
-        private System.Windows.Forms.Button button5;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button btnCancel;
+        private System.Windows.Forms.Button btnOK;
+        private System.Windows.Forms.Button btnReset;
+        private System.Windows.Forms.TextBox priceTextBox;
+        private System.Windows.Forms.TextBox stockLevelTextBox;
+        private System.Windows.Forms.TextBox discountTextBox;
+        private System.Windows.Forms.TextBox weightTextBox;
+        private System.Windows.Forms.TextBox productionDataTextBox;
+        private System.Windows.Forms.BindingSource categoryBindingSource;
+        private res.database.dbDataSet dbDataSet;
+        private System.Windows.Forms.BindingSource supplierBindingSource;
+        private res.database.dbDataSetTableAdapters.SupplierTableAdapter supplierTableAdapter;
+        private res.database.dbDataSetTableAdapters.CategoryTableAdapter categoryTableAdapter;
+        private System.Windows.Forms.TextBox supplierIDTextBox;
+        private System.Windows.Forms.TextBox categoryIDTextBox;
     }
 }

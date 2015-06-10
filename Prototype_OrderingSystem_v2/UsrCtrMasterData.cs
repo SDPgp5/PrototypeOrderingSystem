@@ -11,9 +11,14 @@ namespace Prototype_OrderingSystem_v2
 {
     public partial class UsrCtrMasterData : UserControl
     {
+        FrmFilter frmFilter;
+        UsrCtrFilter ucFilter;
+
         public UsrCtrMasterData()
         {
             InitializeComponent();
+            ucFilter = new UsrCtrFilter(this);
+            frmFilter = new FrmFilter(ucFilter);
         }
 
         private void UsrCtrMasterData_Load(object sender, EventArgs e)
@@ -57,6 +62,8 @@ namespace Prototype_OrderingSystem_v2
             if (choice == DialogResult.Yes)
             {
                 productBindingSource.RemoveCurrent();
+                productBindingSource.EndEdit();
+                productTableAdapter.Update(this.dbDataSet.Product);
                 MessageBox.Show("Delete successfully!");
             }
         }
@@ -69,7 +76,7 @@ namespace Prototype_OrderingSystem_v2
             {
                 foreach (DataRow row in this.dbDataSet.Product)
                 {
-                    Console.WriteLine("ID:" + startingID + "VS" + row[0]);
+                   // Console.WriteLine("ID:" + startingID + "VS" + row[0]);
                     if (startingID.Equals(row[0]))
                     {
                         startingID = preID + (++startingPoint).ToString(format);
@@ -135,11 +142,19 @@ namespace Prototype_OrderingSystem_v2
 
         private void btnFilter_Click(object sender, EventArgs e)
         {
-            UsrCtrFilter ucFilter = new UsrCtrFilter();
-            ucFilter.Dock = DockStyle.Fill;
-            this.Controls.Add(ucFilter);
-            ucFilter.BringToFront();
-            Console.WriteLine("Show");
+            frmFilter.Show();
+            frmFilter.Focus();
+        }
+
+        private void txtEnquiry_TextChanged(object sender, EventArgs e)
+        {
+            productBindingSource.Filter = string.Format("ProductID Like '%{0}%'", txtEnquiry.Text);
+            ucFilter.getProductIDTextBox().Text = txtEnquiry.Text;
+        }
+
+        public BindingSource getProductBindingSource()
+        {
+            return productBindingSource;
         }
 
 
